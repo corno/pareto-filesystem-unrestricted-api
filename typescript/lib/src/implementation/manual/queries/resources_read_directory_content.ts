@@ -5,12 +5,12 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 
 import * as d_read_directory_content from "../../../interface/data/read_directory_content.js"
 
-import * as interface_ from "../../../interface/signatures/resources.js"
+import * as interface_ from "../../../interface/queries.js"
 
 //dependencies
 import * as t_path_to_path from "../transformers/unrestricted_path/unrestricted_path.js"
 
-export const $$: interface_.queries.read_directory_content = p_.query_function(
+export const $$: interface_.queries.read_directory_content = p_.query(
     ($d, $s, $q) => p_super_query_result($q['read directory'](
         {
             'path': $d.path,

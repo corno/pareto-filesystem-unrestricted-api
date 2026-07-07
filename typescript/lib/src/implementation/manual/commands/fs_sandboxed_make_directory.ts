@@ -5,7 +5,7 @@
 // import * as t_path_to_path from "../transformers/sandboxed_path/unrestricted_path.js"
 
 
-// export const $$: interface_.commands.make_directory = p_.command_procedure(
+// export const $$: interface_.commands.make_directory = p_.command(
 //     ($d, $s, $q, $c, $x) => [
 //         $c.unrestricted.execute(
 //             {

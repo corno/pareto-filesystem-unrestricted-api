@@ -353,7 +353,7 @@ Read a file, transform it, write the result:
 
 ```typescript
 export const file_transformer: signatures.commands.transform_file = 
-    p_.command_procedure(($d, $s, $q, $c) => [
+    p_.command(($d, $s, $q, $c) => [
         p_.query(
             $q['read file'](
                 inputPath,
@@ -385,7 +385,7 @@ Process stdin to stdout:
 
 ```typescript
 export const stream_processor: signatures.commands.stream_in_to_stream_out =
-    p_.command_procedure(($d, $s, $q, $c) => [
+    p_.command(($d, $s, $q, $c) => [
         p_.query(
             $q['get instream data']({}, null),
             ($) => $,
@@ -537,7 +537,7 @@ Pareto Resources is used throughout the Pareto ecosystem:
 ```typescript
 // Write structured directory content
 export const $$: signatures.commands.write_directory_content = 
-    p_.command_procedure(($d, $s, $q, $c) => [
+    p_.command(($d, $s, $q, $c) => [
         p_.dictionary(
             $p.directory,
             ($, id) => [

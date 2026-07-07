@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/command'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 
-import * as interface_ from "../../../interface/signatures/resources.js"
+import * as interface_ from "../../../interface/commands.js"
 
 //data types
 import * as d_write_directory_content from "../../../interface/data/write_directory_content.js"
@@ -10,7 +10,7 @@ import * as d_write_directory_content from "../../../interface/data/write_direct
 //dependencies
 import * as t_path_to_path from "../transformers/unrestricted_path/unrestricted_path.js"
 
-export const $$: interface_.commands.write_directory_content = p_.command_procedure(
+export const $$: interface_.write_directory_content = p_.command(
     ($d, $s, $q, $c) => [
         // $c['make directory'].execute(
         //     $p.path,

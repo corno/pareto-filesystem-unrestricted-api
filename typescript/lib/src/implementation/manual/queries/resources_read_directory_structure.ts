@@ -4,12 +4,12 @@ import p_super_query_result from 'pareto-core/implementation/query/super_query_r
 import * as d_directory_structure from "../../../interface/data/directory_structure.js"
 import * as d_read_directory_structure from "../../../interface/data/read_directory_structure.js"
 
-import * as interface_ from "../../../interface/signatures/resources.js"
+import * as interface_ from "../../../interface/queries.js"
 
 //dependencies
 import * as t_path_to_path from "../transformers/unrestricted_path/unrestricted_path.js"
 
-export const $$: interface_.queries.read_directory_structure = p_.query_function(
+export const $$: interface_.queries.read_directory_structure = p_.query(
     ($d, $s, $q) => p_super_query_result($q['read directory'](
         {
             'path': $d.path,
