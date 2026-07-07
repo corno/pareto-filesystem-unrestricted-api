@@ -6,7 +6,7 @@ export namespace queries {
     /**
      * creates a tree structure representing the directory structure, including file contents
      */
-    export type read_directory_content = p_qi.Query_Function<
+    export type read_directory_content = p_qi.Query<
         query_actions.read_directory_content,
         null,
         {
@@ -17,7 +17,7 @@ export namespace queries {
     /**
      * creates a tree structure representing the directory structure, excluding file contents
      */
-    export type read_directory_structure = p_qi.Query_Function<
+    export type read_directory_structure = p_qi.Query<
         query_actions.read_directory_structure,
         null,
         {

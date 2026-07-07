@@ -5,7 +5,7 @@ import * as command_actions from "./command_actions.js"
 /**
  * uses a directory content representation to write files in a directory structure
  */
-export type write_directory_content = p_c.Command_Procedure<
+export type write_directory_content = p_c.Command<
     command_actions.write_directory_content,
     null,
     null,
