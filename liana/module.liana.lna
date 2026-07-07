@@ -1,0 +1,2812 @@
+(
+    `omit (de)serializer`: false
+    `schema tree`: | `set` {
+        'fs unrestricted path': | `schema` (
+            `schema imports`: {}
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Natural': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `natural` ~
+                            )
+                        )
+                    )
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Node Path': (
+                    `root value`: | `group` {
+                        'context': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `internal` 'Context Path'
+                                `results`: _
+                            )
+                        )
+                        'node': (
+                            `description`: _
+                            `value`: | `text` | `global` 'text'
+                        )
+                    }
+                )
+                'Context Path': (
+                    `root value`: | `group` {
+                        'start': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `internal` 'Start'
+                                `results`: _
+                            )
+                        )
+                        'subpath': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `internal` 'Context Subpath'
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Context Subpath': (
+                    `root value`: | `list` (
+                        `value`: | `text` | `global` 'text'
+                        `results`: _
+                    )
+                )
+                'Start': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'absolute': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'relative': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'up steps': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Up Steps'
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+                'Up Steps': (
+                    `root value`: | `simple` | `global` 'Natural'
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'terminal output': | `schema` (
+            `schema imports`: {}
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'multi line text': (
+                        `type`: | `multi line` ~
+                        `link`: | `no` ~
+                    )
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {}
+            )
+            `modules`: {
+                'Message': (
+                    `root value`: | `group` {
+                        'lines': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `text` | `global` 'text'
+                                `results`: _
+                            )
+                        )
+                        'raw': (
+                            `description`: _
+                            `value`: | `text` | `global` 'multi line text'
+                        )
+                    }
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'execute unrestricted command executable': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+                'terminal output': (
+                    `schema set child`: 'terminal output'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Integer': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
+                        )
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'program': (
+                            `description`: _
+                            `value`: | `text` | `global` 'text'
+                        )
+                        'args': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `text` | `global` 'text'
+                                `results`: _
+                            )
+                        )
+                        'working directory': (
+                            `description`: _
+                            `value`: | `optional` | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'failed to spawn': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'message': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'non zero exit code': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'exit code': (
+                                        `description`: _
+                                        `value`: | `optional` | `simple` | `global` 'Integer'
+                                    )
+                                    'stderr': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'execute unrestricted query executable': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+                'terminal output': (
+                    `schema set child`: 'terminal output'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Integer': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
+                        )
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'program': (
+                            `description`: _
+                            `value`: | `text` | `global` 'text'
+                        )
+                        'args': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `text` | `global` 'text'
+                                `results`: _
+                            )
+                        )
+                        'working directory': (
+                            `description`: _
+                            `value`: | `optional` | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'failed to spawn': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'message': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'non zero exit code': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'exit code': (
+                                        `description`: _
+                                        `value`: | `optional` | `simple` | `global` 'Integer'
+                                    )
+                                    'stderr': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+                'Result': (
+                    `root value`: | `group` {
+                        'stdout': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'terminal output'
+                                    `module`: 'Message'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'execute unrestricted smelly command executable': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+                'terminal output': (
+                    `schema set child`: 'terminal output'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Integer': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
+                        )
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'program': (
+                            `description`: _
+                            `value`: | `text` | `global` 'text'
+                        )
+                        'args': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `text` | `global` 'text'
+                                `results`: _
+                            )
+                        )
+                        'working directory': (
+                            `description`: _
+                            `value`: | `optional` | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'failed to spawn': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'message': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'non zero exit code': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'exit code': (
+                                        `description`: _
+                                        `value`: | `optional` | `simple` | `global` 'Integer'
+                                    )
+                                    'stderr': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                    'stdout': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'execute sandboxed command executable': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+                'terminal output': (
+                    `schema set child`: 'terminal output'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Integer': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
+                        )
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'args': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `text` | `global` 'text'
+                                `results`: _
+                            )
+                        )
+                        'working directory': (
+                            `description`: _
+                            `value`: | `optional` | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'failed to spawn': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'message': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'non zero exit code': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'exit code': (
+                                        `description`: _
+                                        `value`: | `optional` | `simple` | `global` 'Integer'
+                                    )
+                                    'stderr': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'execute sandboxed query executable and catch': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+                'terminal output': (
+                    `schema set child`: 'terminal output'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Integer': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
+                        )
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'program': (
+                            `description`: _
+                            `value`: | `text` | `global` 'text'
+                        )
+                        'args': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `text` | `global` 'text'
+                                `results`: _
+                            )
+                        )
+                        'working directory': (
+                            `description`: _
+                            `value`: | `optional` | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Result': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'success': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'stdout': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'error': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `internal` 'Error'
+                                    `results`: _
+                                )
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+                'Error': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'failed to spawn': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'message': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'non zero exit code': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'exit code': (
+                                        `description`: _
+                                        `value`: | `optional` | `simple` | `global` 'Integer'
+                                    )
+                                    'stderr': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'execute sandboxed query executable': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+                'terminal output': (
+                    `schema set child`: 'terminal output'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Integer': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
+                        )
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'args': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `text` | `global` 'text'
+                                `results`: _
+                            )
+                        )
+                        'working directory': (
+                            `description`: _
+                            `value`: | `optional` | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'failed to spawn': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'message': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'non zero exit code': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'exit code': (
+                                        `description`: _
+                                        `value`: | `optional` | `simple` | `global` 'Integer'
+                                    )
+                                    'stderr': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+                'Result': (
+                    `root value`: | `group` {
+                        'stdout': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'terminal output'
+                                    `module`: 'Message'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'execute sandboxed smelly command executable': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+                'terminal output': (
+                    `schema set child`: 'terminal output'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Integer': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
+                        )
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'args': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `text` | `global` 'text'
+                                `results`: _
+                            )
+                        )
+                        'working directory': (
+                            `description`: _
+                            `value`: | `optional` | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'failed to spawn': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'message': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'non zero exit code': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'exit code': (
+                                        `description`: _
+                                        `value`: | `optional` | `simple` | `global` 'Integer'
+                                    )
+                                    'stderr': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                    'stdout': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `external` (
+                                                `import`: 'terminal output'
+                                                `module`: 'Message'
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'list of characters': | `schema` (
+            `schema imports`: {}
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'Output': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Natural': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `natural` ~
+                            )
+                        )
+                    )
+                }
+            )
+            `modules`: {
+                'List of Characters': (
+                    `root value`: | `list` (
+                        `value`: | `simple` | `global` 'Natural'
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fountain pen': | `schema` (
+            `schema imports`: {
+                'list of characters': (
+                    `schema set child`: 'list of characters'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'Output': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Paragraph': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'composed': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `list` (
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Paragraph'
+                                        `results`: _
+                                    )
+                                    `results`: _
+                                )
+                            )
+                            'sentences': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `list` (
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Sentence'
+                                        `results`: _
+                                    )
+                                    `results`: _
+                                )
+                            )
+                            'optional': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `optional` | `component` (
+                                    `type`: | `internal` 'Paragraph'
+                                    `results`: _
+                                )
+                            )
+                            'nothing': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'rich list': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'items': (
+                                        `description`: _
+                                        `value`: | `list` (
+                                            `value`: | `component` (
+                                                `type`: | `internal` 'Sentence'
+                                                `results`: _
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                    'if empty': (
+                                        `description`: _
+                                        `value`: | `optional` | `component` (
+                                            `type`: | `internal` 'Sentence'
+                                            `results`: _
+                                        )
+                                    )
+                                    'if not empty': (
+                                        `description`: _
+                                        `value`: | `group` {
+                                            'before': (
+                                                `description`: _
+                                                `value`: | `optional` | `component` (
+                                                    `type`: | `internal` 'Sentence'
+                                                    `results`: _
+                                                )
+                                            )
+                                            'indent': (
+                                                `description`: _
+                                                `value`: | `simple` | `global` 'boolean'
+                                            )
+                                            'separator': (
+                                                `description`: _
+                                                `value`: | `optional` | `component` (
+                                                    `type`: | `internal` 'Phrase'
+                                                    `results`: _
+                                                )
+                                            )
+                                            'after': (
+                                                `description`: _
+                                                `value`: | `optional` | `component` (
+                                                    `type`: | `internal` 'Sentence'
+                                                    `results`: _
+                                                )
+                                            )
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+                'Sentence': (
+                    `root value`: | `list` (
+                        `value`: | `component` (
+                            `type`: | `internal` 'Phrase'
+                            `results`: _
+                        )
+                        `results`: _
+                    )
+                )
+                'Phrase': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'value': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `state` (
+                                    `options`: {
+                                        'text': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `text` | `global` 'Output'
+                                        )
+                                        'list of characters': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `component` (
+                                                `type`: | `external` (
+                                                    `import`: 'list of characters'
+                                                    `module`: 'List of Characters'
+                                                )
+                                                `results`: _
+                                            )
+                                        )
+                                    }
+                                    `results`: _
+                                )
+                            )
+                            'indent': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `internal` 'Paragraph'
+                                    `results`: _
+                                )
+                            )
+                            'composed': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `list` (
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Phrase'
+                                        `results`: _
+                                    )
+                                    `results`: _
+                                )
+                            )
+                            'optional': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `optional` | `component` (
+                                    `type`: | `internal` 'Phrase'
+                                    `results`: _
+                                )
+                            )
+                            'nothing': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'rich list': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'items': (
+                                        `description`: _
+                                        `value`: | `list` (
+                                            `value`: | `component` (
+                                                `type`: | `internal` 'Phrase'
+                                                `results`: _
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                    'if empty': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Phrase'
+                                            `results`: _
+                                        )
+                                    )
+                                    'if not empty': (
+                                        `description`: _
+                                        `value`: | `group` {
+                                            'before': (
+                                                `description`: _
+                                                `value`: | `component` (
+                                                    `type`: | `internal` 'Phrase'
+                                                    `results`: _
+                                                )
+                                            )
+                                            'separator': (
+                                                `description`: _
+                                                `value`: | `component` (
+                                                    `type`: | `internal` 'Phrase'
+                                                    `results`: _
+                                                )
+                                            )
+                                            'after': (
+                                                `description`: _
+                                                `value`: | `component` (
+                                                    `type`: | `internal` 'Phrase'
+                                                    `results`: _
+                                                )
+                                            )
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'path non normalized': | `schema` (
+            `schema imports`: {}
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Natural': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `natural` ~
+                            )
+                        )
+                    )
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Non Normalized Path': (
+                    `root value`: | `group` {
+                        'leading slash': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                        'segments': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `state` (
+                                    `options`: {
+                                        'parent': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `nothing` ~
+                                        )
+                                        'child': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `text` | `global` 'text'
+                                        )
+                                        'current': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `nothing` ~
+                                        )
+                                        'nothing': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `nothing` ~
+                                        )
+                                    }
+                                    `results`: _
+                                )
+                                `results`: _
+                            )
+                        )
+                        'trailing slash': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                    }
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed path': | `schema` (
+            `schema imports`: {}
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'text': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Natural': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `natural` ~
+                            )
+                        )
+                    )
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Node Path': (
+                    `root value`: | `group` {
+                        'context': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `internal` 'Context Path'
+                                `results`: _
+                            )
+                        )
+                        'node': (
+                            `description`: _
+                            `value`: | `text` | `global` 'text'
+                        )
+                    }
+                )
+                'Context Path': (
+                    `root value`: | `group` {
+                        'start': (
+                            `description`: _
+                            `value`: | `nothing` ~
+                        )
+                        'subpath': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `internal` 'Context Subpath'
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Context Subpath': (
+                    `root value`: | `list` (
+                        `value`: | `text` | `global` 'text'
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs unrestricted chmod': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'mode': (
+                            `description`: _
+                            `value`: | `group` {
+                                'owner': (
+                                    `description`: _
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Permissions'
+                                        `results`: _
+                                    )
+                                )
+                                'group': (
+                                    `description`: _
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Permissions'
+                                        `results`: _
+                                    )
+                                )
+                                'others': (
+                                    `description`: _
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Permissions'
+                                        `results`: _
+                                    )
+                                )
+                                'special bits': (
+                                    `description`: _
+                                    `value`: | `optional` | `group` {
+                                        'setuid': (
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'boolean'
+                                        )
+                                        'setgid': (
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'boolean'
+                                        )
+                                        'sticky': (
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'boolean'
+                                        )
+                                    }
+                                )
+                            }
+                        )
+                    }
+                )
+                'Permissions': (
+                    `root value`: | `group` {
+                        'read': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                        'write': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                        'execute': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'type': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'path does not exist': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'permission denied': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'invalid mode': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed chmod': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs sandboxed path'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted chmod'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'mode': (
+                            `description`: _
+                            `value`: | `group` {
+                                'owner': (
+                                    `description`: _
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Permissions'
+                                        `results`: _
+                                    )
+                                )
+                                'group': (
+                                    `description`: _
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Permissions'
+                                        `results`: _
+                                    )
+                                )
+                                'others': (
+                                    `description`: _
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Permissions'
+                                        `results`: _
+                                    )
+                                )
+                                'special bits': (
+                                    `description`: _
+                                    `value`: | `optional` | `group` {
+                                        'setuid': (
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'boolean'
+                                        )
+                                        'setgid': (
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'boolean'
+                                        )
+                                        'sticky': (
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'boolean'
+                                        )
+                                    }
+                                )
+                            }
+                        )
+                    }
+                )
+                'Permissions': (
+                    `root value`: | `group` {
+                        'read': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                        'write': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                        'execute': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs unrestricted copy': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'source': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'target': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'options': (
+                            `description`: _
+                            `value`: | `group` {
+                                'recursive': (
+                                    `description`: _
+                                    `value`: | `simple` | `global` 'boolean'
+                                )
+                                'force': (
+                                    `description`: _
+                                    `value`: | `simple` | `global` 'boolean'
+                                )
+                                'errorOnExist': (
+                                    `description`: _
+                                    `value`: | `simple` | `global` 'boolean'
+                                )
+                            }
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'type': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'source does not exist': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'node is not a file': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'permission denied': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'file too large': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'device not ready': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed copy': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs sandboxed path'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted copy'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'source': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'target': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'options': (
+                            `description`: _
+                            `value`: | `group` {
+                                'recursive': (
+                                    `description`: _
+                                    `value`: | `simple` | `global` 'boolean'
+                                )
+                                'force': (
+                                    `description`: _
+                                    `value`: | `simple` | `global` 'boolean'
+                                )
+                                'errorOnExist': (
+                                    `description`: _
+                                    `value`: | `simple` | `global` 'boolean'
+                                )
+                            }
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs unrestricted make directory': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'delete existing': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'type': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'directory already exists': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'permission denied': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed make directory': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs sandboxed path'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted make directory'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'delete existing': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs unrestricted read directory': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'type': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'directory does not exist': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'node is not a directory': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Result': (
+                    `root value`: | `dictionary` (
+                        `value`: | `group` {
+                            'node type': (
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `internal` 'Node Type'
+                                    `results`: _
+                                )
+                            )
+                            'context directory': (
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `external` (
+                                        `import`: 'path'
+                                        `module`: 'Context Path'
+                                    )
+                                    `results`: _
+                                )
+                            )
+                            'path': (
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `external` (
+                                        `import`: 'path'
+                                        `module`: 'Node Path'
+                                    )
+                                    `results`: _
+                                )
+                            )
+                        }
+                    )
+                )
+                'Node Type': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'file': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'directory': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'other': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed read directory': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs sandboxed path'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted read directory'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Result': (
+                    `root value`: | `dictionary` (
+                        `value`: | `group` {
+                            'node type': (
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `internal` 'Node Type'
+                                    `results`: _
+                                )
+                            )
+                            'context directory': (
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `external` (
+                                        `import`: 'path'
+                                        `module`: 'Context Path'
+                                    )
+                                    `results`: _
+                                )
+                            )
+                            'path': (
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `external` (
+                                        `import`: 'path'
+                                        `module`: 'Node Path'
+                                    )
+                                    `results`: _
+                                )
+                            )
+                        }
+                    )
+                )
+                'Node Type': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'file': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'directory': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'other': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs unrestricted read file': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+                'list of characters': (
+                    `schema set child`: 'list of characters'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'path'
+                            `module`: 'Node Path'
+                        )
+                        `results`: _
+                    )
+                )
+                'Error': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'type': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'file does not exist': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'node is not a file': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'permission denied': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'file too large': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'device not ready': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Result': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'list of characters'
+                            `module`: 'List of Characters'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed read file': | `schema` (
+            `schema imports`: {
+                'list of characters': (
+                    `schema set child`: 'list of characters'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted read file'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `nothing` ~
+                )
+                'Result': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'list of characters'
+                            `module`: 'List of Characters'
+                        )
+                        `results`: _
+                    )
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed read file within context': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs sandboxed path'
+                    `schema`: ~
+                )
+                'list of characters': (
+                    `schema set child`: 'list of characters'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted read file'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'path'
+                            `module`: 'Node Path'
+                        )
+                        `results`: _
+                    )
+                )
+                'Result': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'list of characters'
+                            `module`: 'List of Characters'
+                        )
+                        `results`: _
+                    )
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs unrestricted remove': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'error if not exists': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'type': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'node does not exist': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'permission denied': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed remove': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs sandboxed path'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted remove'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Context Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'error if not exists': (
+                            `description`: _
+                            `value`: | `simple` | `global` 'boolean'
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs unrestricted stat possible node': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'path'
+                            `module`: 'Node Path'
+                        )
+                        `results`: _
+                    )
+                )
+                'Error': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'type': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'unknown': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Result': (
+                    `root value`: | `component` (
+                        `type`: | `internal` 'Node Type'
+                        `results`: _
+                    )
+                )
+                'Node Type': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'does not exist': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'file': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'directory': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed stat possible node': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs sandboxed path'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted stat possible node'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'path'
+                            `module`: 'Node Path'
+                        )
+                        `results`: _
+                    )
+                )
+                'Result': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'does not exist': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'file': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'directory': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs unrestricted stat': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'path'
+                            `module`: 'Node Path'
+                        )
+                        `results`: _
+                    )
+                )
+                'Error': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'type': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'node does not exist': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Result': (
+                    `root value`: | `component` (
+                        `type`: | `internal` 'Node Type'
+                        `results`: _
+                    )
+                )
+                'Node Type': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'file': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'directory': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed stat': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs sandboxed path'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted stat'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'path'
+                            `module`: 'Node Path'
+                        )
+                        `results`: _
+                    )
+                )
+                'Result': (
+                    `root value`: | `component` (
+                        `type`: | `internal` 'Node Type'
+                        `results`: _
+                    )
+                )
+                'Node Type': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'file': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'directory': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs unrestricted write file': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs unrestricted path'
+                    `schema`: ~
+                )
+                'list of characters': (
+                    `schema set child`: 'list of characters'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'data': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'list of characters'
+                                    `module`: 'List of Characters'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'type': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'permission denied': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'fs sandboxed write file': | `schema` (
+            `schema imports`: {
+                'path': (
+                    `schema set child`: 'fs sandboxed path'
+                    `schema`: ~
+                )
+                'list of characters': (
+                    `schema set child`: 'list of characters'
+                    `schema`: ~
+                )
+                'unrestricted': (
+                    `schema set child`: 'fs unrestricted write file'
+                    `schema`: ~
+                )
+            }
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {}
+                `simple types`: {}
+            )
+            `modules`: {
+                'Parameters': (
+                    `root value`: | `group` {
+                        'path': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'path'
+                                    `module`: 'Node Path'
+                                )
+                                `results`: _
+                            )
+                        )
+                        'data': (
+                            `description`: _
+                            `value`: | `component` (
+                                `type`: | `external` (
+                                    `import`: 'list of characters'
+                                    `module`: 'List of Characters'
+                                )
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Error': (
+                    `root value`: | `component` (
+                        `type`: | `external` (
+                            `import`: 'unrestricted'
+                            `module`: 'Error'
+                        )
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+    }
+)

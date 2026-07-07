@@ -1,0 +1,60 @@
+
+import * as p_i from 'pareto-core/interface/__internal/Abort'
+
+import * as i_in from "../../data.js"
+
+import * as i_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
+
+export namespace Paragraph_ {
+    
+    export type I = i_in.Paragraph
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Paragraph_ = (
+    context: Paragraph_.I,
+) => Paragraph_.O
+
+export namespace Sentence_ {
+    
+    export type I = i_in.Sentence
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Sentence_ = (
+    context: Sentence_.I,
+) => Sentence_.O
+
+export namespace Phrase_ {
+    
+    export type I = i_in.Phrase
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Phrase_ = (
+    context: Phrase_.I,
+) => Phrase_.O
+
+export type { 
+    Paragraph_ as Paragraph, 
+    Sentence_ as Sentence, 
+    Phrase_ as Phrase, 
+}
