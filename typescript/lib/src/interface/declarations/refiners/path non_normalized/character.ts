@@ -5,9 +5,9 @@ import type * as d_out from "../../../generated/liana/schemas/path_non_normalize
 
 
 
-    export type Non_Normalized_Path = p_.Production_Without_Error<
-        d_out.Non_Normalized_Path,
-        number,
-        null
-    >
+export type Non_Normalized_Path = p_.Production_Without_Error<
+    d_out.Non_Normalized_Path,
+    number,
+    null
+>
 

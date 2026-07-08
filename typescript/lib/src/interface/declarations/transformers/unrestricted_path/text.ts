@@ -5,12 +5,12 @@ import type * as d_in from "../../../generated/liana/schemas/fs_unrestricted_pat
 import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
 
 
-    export type Node_Path = p_.Transformer<
-        d_in.Node_Path,
-        d_out.Text
-    >
-    export type Context_Path = p_.Transformer<
-        d_in.Context_Path,
-        d_out.Text
-    >
+export type Node_Path = p_.Transformer<
+    d_in.Node_Path,
+    d_out.Text
+>
+export type Context_Path = p_.Transformer<
+    d_in.Context_Path,
+    d_out.Text
+>
 
