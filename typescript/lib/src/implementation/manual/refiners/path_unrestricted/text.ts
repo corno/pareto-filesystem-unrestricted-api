@@ -21,6 +21,7 @@ export namespace interface_ {
         d_function2.Parameters
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/refiners/path_unrestricted/text.js"
 
 
 //dependencies

@@ -15,6 +15,7 @@ export namespace interface_ {
         d_out.Text
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/unrestricted_path/text.js"
 
 //dependencies
 import * as t_to_loc from "./deprecated_list_of_characters.js"

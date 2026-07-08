@@ -17,6 +17,7 @@ export namespace interface_ {
         d_out.List_of_Characters
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/unrestricted_path/deprecated_list_of_characters.js"
 
 export const Node_Path: interface_.Node_Path = ($) => p_.literal.segmented_list([
     Context_Path($.context),

@@ -12,6 +12,7 @@ export namespace interface_ {
         d_out.Phrase
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/stat/prose.js"
 
 //dependencies
 import * as t_path_to_text from "../unrestricted_path/deprecated_list_of_characters.js"

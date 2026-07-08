@@ -13,6 +13,7 @@ export namespace interface_ {
         null
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/refiners/path non_normalized/character.js"
 
 export const Non_Normalized_Path: interface_.Non_Normalized_Path = (iterator) => {
     return {

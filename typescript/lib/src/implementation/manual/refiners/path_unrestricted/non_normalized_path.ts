@@ -24,6 +24,7 @@ export namespace interface_ {
         { 'pedantic': boolean }
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/refiners/path_unrestricted/non_normalized_path.js"
 
 export const Node_Path: interface_.Node_Path = ($, abort, $p) => {
 

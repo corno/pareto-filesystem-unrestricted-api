@@ -12,6 +12,7 @@ export namespace interface_ {
     >
 
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/read_file/prose.js"
 
 
 //dependencies
