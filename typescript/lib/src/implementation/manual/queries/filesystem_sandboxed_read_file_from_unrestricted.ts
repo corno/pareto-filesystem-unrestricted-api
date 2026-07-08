@@ -1,5 +1,5 @@
 
-// import * as interface_ from "../../../interface/signatures/filesystem_sandboxed.js"
+// import type * as interface_ from "../../../interface/signatures/filesystem_sandboxed.js"
 
 // //dependencies
 // import * as t_path_to_path from "../transformers/sandboxed_path/unrestricted_path.js"

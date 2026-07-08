@@ -4,7 +4,7 @@ import p_super_query_result from 'pareto-core/implementation/query/super_query_r
 import type * as d_directory_structure from "../../../interface/data/directory_structure.js"
 import type * as d_read_directory_structure from "../../../interface/data/read_directory_structure.js"
 
-import * as interface_ from "../../../interface/declarations/queries.js"
+import type * as interface_ from "../../../interface/declarations/queries.js"
 
 //dependencies
 import * as t_path_to_path from "../transformers/unrestricted_path/unrestricted_path.js"
