@@ -15,7 +15,7 @@ export type Error =
     | ['trailing slash not allowed', null]
     | ['no node', null]
 
-export namespace signatures {
+export namespace interface_ {
     export type Node_Path = p_i.Refiner_With_Parameter<
         d_out.Node_Path,
         Error,
@@ -24,7 +24,7 @@ export namespace signatures {
     >
 }
 
-export const Node_Path: signatures.Node_Path = ($, abort, $p) => {
+export const Node_Path: interface_.Node_Path = ($, abort, $p) => {
 
     if ($p.pedantic) {
         if ($['trailing slash']) {

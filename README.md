@@ -352,7 +352,7 @@ const errorDisplay = t_cmd_error.Error(error)
 Read a file, transform it, write the result:
 
 ```typescript
-export const file_transformer: signatures.commands.transform_file = 
+export const file_transformer: interface_.commands.transform_file = 
     p_.command(($d, $s, $q, $c) => [
         p_.query(
             $q['read file'](
@@ -384,7 +384,7 @@ export const file_transformer: signatures.commands.transform_file =
 Process stdin to stdout:
 
 ```typescript
-export const stream_processor: signatures.commands.stream_in_to_stream_out =
+export const stream_processor: interface_.commands.stream_in_to_stream_out =
     p_.command(($d, $s, $q, $c) => [
         p_.query(
             $q['get instream data']({}, null),
@@ -536,7 +536,7 @@ Pareto Resources is used throughout the Pareto ecosystem:
 
 ```typescript
 // Write structured directory content
-export const $$: signatures.commands.write_directory_content = 
+export const $$: interface_.commands.write_directory_content = 
     p_.command(($d, $s, $q, $c) => [
         p_.dictionary(
             $p.directory,

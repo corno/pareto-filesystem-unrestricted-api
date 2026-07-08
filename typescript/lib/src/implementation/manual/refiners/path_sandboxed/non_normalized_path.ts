@@ -18,13 +18,13 @@
 //     | ['absolute path not allowed', null]
 //     | ['up steps not allowed', null]
 
-// export namespace signatures {
+// export namespace interface_ {
 //     export type Node_Path = p_i.Refiner_With_Parameter<
 // d_out.Node_Path, Error, d_in.Non_Normalized_Path, { 'pedantic': boolean }
 // >
 // }
 
-// export const Node_Path: signatures.Node_Path = ($, abort, $p) => {
+// export const Node_Path: interface_.Node_Path = ($, abort, $p) => {
 
 //     if ($p.pedantic) {
 //         if ($['trailing slash']) {

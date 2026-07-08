@@ -3,7 +3,7 @@ import * as p_i from 'pareto-core/interface/transformer'
 
 import type * as d_in from "../../../../interface/data/read_directory_content.js"
 import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
-namespace signatures {
+export namespace interface_ {
 
     export type Error = p_i.Transformer<
         d_in.Error, d_out.Phrase
@@ -23,7 +23,7 @@ import * as t_read_file_to_prose from "../read_file/prose.js"
 
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
-export const Node_Error: signatures.Node_Error = ($) => p_.from.state($).decide(
+export const Node_Error: interface_.Node_Error = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'file': return p_.option($, ($) => t_read_file_to_prose.Error($))
@@ -32,7 +32,7 @@ export const Node_Error: signatures.Node_Error = ($) => p_.from.state($).decide(
         }
     })
 
-export const Error: signatures.Error = ($) => p_.from.state($).decide(
+export const Error: interface_.Error = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'directory content processing': return p_.option($, ($) => sh.ph.indent(
