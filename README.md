@@ -442,7 +442,7 @@ $c['execute command executable'].execute(
                 return ['build', ['spawn failed', $]]
             case 'non zero exit code':
                 return ['build', ['exit code', $]]
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })
 )

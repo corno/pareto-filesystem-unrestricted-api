@@ -21,7 +21,7 @@ export const Error: Error = ($) => sh.ph.composed([
         ($) => {
             switch ($[0]) {
                 case 'unknown': return p_.option($, ($) => sh.ph.literal("unknown"))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         }),
     sh.ph.literal(": "),

@@ -83,7 +83,7 @@ export const Node_Path: signatures.Node_Path = ($, abort, $p) => {
                         }))
                         case 'current': return p_.option($, ($) => intermediate_result)
                         case 'nothing': return p_.option($, ($) => intermediate_result)
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 })
             return null
@@ -155,7 +155,7 @@ export const Context_Path = (
                         }))
                         case 'current': return p_.option($, ($) => intermediate_result)
                         case 'nothing': return p_.option($, ($) => intermediate_result)
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 })
             return null

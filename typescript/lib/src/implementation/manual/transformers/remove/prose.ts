@@ -22,7 +22,7 @@ export const Error: Error = ($) => sh.ph.composed([
             switch ($[0]) {
                 case 'node does not exist': return p_.option($, ($) => sh.ph.literal("node does not exist"))
                 case 'permission denied': return p_.option($, ($) => sh.ph.literal("permission denied"))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         }),
     sh.ph.literal(": "),

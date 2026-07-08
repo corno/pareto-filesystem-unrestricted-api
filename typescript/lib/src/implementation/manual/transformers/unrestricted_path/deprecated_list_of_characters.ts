@@ -58,7 +58,7 @@ export const Context_Path: interface_.Context_Path = ($) => p_.literal.segmented
                             )
                             return null
                         })
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 })
             if (p_.from.list($.subpath).on_has_items(

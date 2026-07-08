@@ -23,7 +23,7 @@ export const Error: Error = ($) => sh.ph.composed([
                 case 'path does not exist': return p_.option($, ($) => sh.ph.literal("path does not exist"))
                 case 'permission denied': return p_.option($, ($) => sh.ph.literal("permission denied"))
                 case 'invalid mode': return p_.option($, ($) => sh.ph.literal("invalid mode"))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         }),
     sh.ph.literal(": "),

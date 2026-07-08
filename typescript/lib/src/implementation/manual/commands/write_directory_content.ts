@@ -47,7 +47,7 @@ export const $$: interface_.write_directory_content = p_.command(
                             )
                         ])
 
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 })
             ],

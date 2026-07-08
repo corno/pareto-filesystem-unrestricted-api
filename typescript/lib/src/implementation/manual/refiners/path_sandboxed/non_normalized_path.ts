@@ -70,7 +70,7 @@
 //                 }))
 //                 case 'current': return p_.option($, ($) => intermediate_result)
 //                 case 'nothing': return p_.option($, ($) => intermediate_result)
-//                 default: return p_.au($[0])
+//                 default: return p_.exhaustive($[0])
 //             }
 //         })
 //     })
@@ -138,7 +138,7 @@
 //                 }))
 //                 case 'current': return p_.option($, ($) => intermediate_result)
 //                 case 'nothing': return p_.option($, ($) => intermediate_result)
-//                 default: return p_.au($[0])
+//                 default: return p_.exhaustive($[0])
 //             }
 //         })
 //     })

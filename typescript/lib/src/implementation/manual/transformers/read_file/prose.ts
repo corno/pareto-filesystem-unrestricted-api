@@ -28,7 +28,7 @@ export const Error: Error = ($) => sh.ph.composed([
                 case 'node is not a file': return p_.option($, ($) => sh.ph.literal("node is not a file"))
                 case 'file too large': return p_.option($, ($) => sh.ph.literal("file too large"))
                 case 'device not ready': return p_.option($, ($) => sh.ph.literal("device not ready"))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         }),
     sh.ph.literal(": "),

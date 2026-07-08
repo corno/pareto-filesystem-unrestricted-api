@@ -22,7 +22,7 @@ export const Error: Error = ($) => sh.ph.composed([
 
                 case 'directory already exists': return p_.option($, ($) => sh.ph.literal("directory already exists"))
                 case 'permission denied': return p_.option($, ($) => sh.ph.literal("permission denied"))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         }
     ),

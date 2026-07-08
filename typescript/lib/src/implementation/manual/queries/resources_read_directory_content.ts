@@ -41,7 +41,7 @@ export const $$: interface_.queries.read_directory_content = p_.query(
                         )).transform(
                             ($) => ['directory', $]))
                         case 'other': return p_.option($, ($) => p_.e.direct_result(['other', null]))
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 })
             },

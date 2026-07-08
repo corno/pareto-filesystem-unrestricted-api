@@ -25,7 +25,7 @@ export const Error: Error = ($) => sh.ph.composed([
                 case 'node is not a file': return p_.option($, ($) => sh.ph.literal("node is not a file"))
                 case 'permission denied': return p_.option($, ($) => sh.ph.literal("permission denied"))
                 case 'file too large': return p_.option($, ($) => sh.ph.literal("file too large"))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         }),
     sh.ph.literal(": "),
