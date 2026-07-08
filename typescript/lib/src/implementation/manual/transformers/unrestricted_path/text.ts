@@ -1,21 +1,6 @@
-import type * as p_i from 'pareto-core/interface/transformer'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-//data types
-import type * as d_in from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
-import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
-
-export namespace interface_ {
-    export type Node_Path = p_i.Transformer<
-        d_in.Node_Path,
-        d_out.Text
-    >
-    export type Context_Path = p_i.Transformer<
-        d_in.Context_Path,
-        d_out.Text
-    >
-}
-import * as temp_interface_ from "../../../../interface/declarations/transformers/unrestricted_path/text.js"
+import type * as interface_ from "../../../../interface/declarations/transformers/unrestricted_path/text.js"
 
 //dependencies
 import * as t_to_loc from "./deprecated_list_of_characters.js"

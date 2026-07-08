@@ -1,28 +1,10 @@
-import type * as p_i from 'pareto-core/interface/refiner'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
+
+import type * as interface_ from "../../../../interface/declarations/refiners/path_unrestricted/text.js"
 
 //data types
 import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
 import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
-import type * as d_function from "./non_normalized_path.js"
-
-export namespace d_function2 {
-
-export type Parameters = { 'pedantic': boolean }
-
-}
-
-
-export namespace interface_ {
-    export type Node_Path = p_i.Refiner_With_Parameter<
-        d_out.Node_Path,
-        d_function.Error,
-        d_in.Text,
-        d_function2.Parameters
-    >
-}
-import * as temp_interface_ from "../../../../interface/declarations/refiners/path_unrestricted/text.js"
-
 
 //dependencies
 import * as r_from_list_of_characters from "./list_of_characters.js"
