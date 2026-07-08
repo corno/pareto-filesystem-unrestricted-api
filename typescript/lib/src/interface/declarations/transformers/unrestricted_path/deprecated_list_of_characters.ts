@@ -1,7 +1,5 @@
 
 import type * as p_ from 'pareto-core/interface/transformer'
-import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //data types
 import type * as d_in from "../../../generated/liana/schemas/fs_unrestricted_path/data.js"

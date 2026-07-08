@@ -1,5 +1,4 @@
 import type * as p_ from 'pareto-core/interface/transformer'
-import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
 //data types
 import type * as d_in from "../../../generated/liana/schemas/fs_unrestricted_path/data.js"
