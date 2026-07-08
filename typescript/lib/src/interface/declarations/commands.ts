@@ -1,6 +1,6 @@
 import * as p_c from 'pareto-core/interface/command'
 
-import * as command_actions from "./command_actions.js"
+import * as command_actions from "../actions/commands.js"
 
 /**
  * uses a directory content representation to write files in a directory structure

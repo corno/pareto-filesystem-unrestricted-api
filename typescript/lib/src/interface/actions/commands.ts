@@ -1,11 +1,11 @@
 import * as p_ from 'pareto-core/interface/command_action'
 
-import * as d_fs_unrestricted_chmod from "./generated/liana/schemas/fs_unrestricted_chmod/data.js"
-import * as d_fs_unrestricted_copy from "./generated/liana/schemas/fs_unrestricted_copy/data.js"
-import * as d_fs_unrestricted_make_directory from "./generated/liana/schemas/fs_unrestricted_make_directory/data.js"
-import * as d_fs_unrestricted_remove from "./generated/liana/schemas/fs_unrestricted_remove/data.js"
-import * as d_fs_unrestricted_write_file from "./generated/liana/schemas/fs_unrestricted_write_file/data.js"
-import * as d_write_directory_content from "./data/write_directory_content.js"
+import * as d_fs_unrestricted_chmod from "../generated/liana/schemas/fs_unrestricted_chmod/data.js"
+import * as d_fs_unrestricted_copy from "../generated/liana/schemas/fs_unrestricted_copy/data.js"
+import * as d_fs_unrestricted_make_directory from "../generated/liana/schemas/fs_unrestricted_make_directory/data.js"
+import * as d_fs_unrestricted_remove from "../generated/liana/schemas/fs_unrestricted_remove/data.js"
+import * as d_fs_unrestricted_write_file from "../generated/liana/schemas/fs_unrestricted_write_file/data.js"
+import * as d_write_directory_content from "../data/write_directory_content.js"
 
 export type chmod = p_.Command_Action<d_fs_unrestricted_chmod.Error, d_fs_unrestricted_chmod.Parameters>
 export type copy = p_.Command_Action<d_fs_unrestricted_copy.Error, d_fs_unrestricted_copy.Parameters>
