@@ -3,7 +3,7 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
 //data types
-import type * as d_out from "../../../../interface/generated/liana/schemas/path_non_normalized/data.js"
+import type * as d_out from "../../../generated/liana/schemas/path_non_normalized/data.js"
 
 
 export namespace interface_ {

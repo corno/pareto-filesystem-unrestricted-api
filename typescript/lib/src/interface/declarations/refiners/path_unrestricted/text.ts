@@ -2,7 +2,7 @@ import type * as p_i from 'pareto-core/interface/refiner'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //data types
-import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
+import type * as d_out from "../../../generated/liana/schemas/fs_unrestricted_path/data.js"
 import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
 import type * as d_function from "./non_normalized_path.js"
 
