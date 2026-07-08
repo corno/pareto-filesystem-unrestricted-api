@@ -5,7 +5,7 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 import * as interface_ from "../../../interface/declarations/commands.js"
 
 //data types
-import * as d_write_directory_content from "../../../interface/data/write_directory_content.js"
+import type * as d_write_directory_content from "../../../interface/data/write_directory_content.js"
 
 //dependencies
 import * as t_path_to_path from "../transformers/unrestricted_path/unrestricted_path.js"

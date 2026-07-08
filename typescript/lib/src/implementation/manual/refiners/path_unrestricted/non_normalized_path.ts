@@ -2,8 +2,8 @@ import * as p_ from 'pareto-core/implementation/refiner'
 import * as p_t from 'pareto-core/implementation/transformer'
 import * as p_i from 'pareto-core/interface/refiner'
 
-import * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
-import * as d_in from "../../../../interface/generated/liana/schemas/path_non_normalized/data.js"
+import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
+import type * as d_in from "../../../../interface/generated/liana/schemas/path_non_normalized/data.js"
 
 type Intermediate_Result = {
     subppath: d_out.Context_Subpath

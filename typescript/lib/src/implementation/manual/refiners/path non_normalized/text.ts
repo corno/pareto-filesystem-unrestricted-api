@@ -2,8 +2,8 @@ import * as p_ti from 'pareto-core/interface/transformer'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //data types
-import * as d_out from "../../../../interface/generated/liana/schemas/path_non_normalized/data.js"
-import * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
+import type * as d_out from "../../../../interface/generated/liana/schemas/path_non_normalized/data.js"
+import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
 
 //dependencies
 import * as t_from_list_of_characters from "./list_of_characters.js"

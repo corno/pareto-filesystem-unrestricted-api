@@ -1,10 +1,10 @@
 // import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 // import p_text_from_list from 'pareto-core/implementation/refiner/specials/text_from_list'
 
-// import * as d_out from "../../../../interface/generated/liana/schemas/fs_sandboxed_path/data.js"
-// import * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
-// import * as d_error from "./non_normalized_path.js"
-// import * as d_function from "../../../../interface/data/sandboxed_path_from_non_normalized_path.js"
+// import type * as d_out from "../../../../interface/generated/liana/schemas/fs_sandboxed_path/data.js"
+// import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
+// import type * as d_error from "./non_normalized_path.js"
+// import type * as d_function from "../../../../interface/data/sandboxed_path_from_non_normalized_path.js"
 
 // export type Parameters = { 'pedantic': boolean }
 

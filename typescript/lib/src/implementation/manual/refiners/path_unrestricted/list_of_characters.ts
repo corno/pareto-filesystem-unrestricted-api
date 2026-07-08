@@ -1,8 +1,8 @@
 import * as p_i from 'pareto-core/interface/refiner'
 
-import * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
-import * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
-import * as d_function from "./non_normalized_path.js"
+import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
+import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
+import type * as d_function from "./non_normalized_path.js"
 
 export namespace d_function2 {
     export type Parameters = { 'pedantic': boolean }

@@ -1,7 +1,7 @@
 
-// import * as d_out from "../../../../interface/generated/liana/schemas/fs_sandboxed_path/data.js"
-// import * as d_in from "../../../../interface/generated/liana/schemas/path_non_normalized/data.js"
-// import * as d_function from "../../../../interface/data/sandboxed_path_from_non_normalized_path.js"
+// import type * as d_out from "../../../../interface/generated/liana/schemas/fs_sandboxed_path/data.js"
+// import type * as d_in from "../../../../interface/generated/liana/schemas/path_non_normalized/data.js"
+// import type * as d_function from "../../../../interface/data/sandboxed_path_from_non_normalized_path.js"
 
 // import { remove_last_element } from "../../../temp/temp_core.js"
 
