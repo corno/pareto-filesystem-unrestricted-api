@@ -5,7 +5,7 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 import type * as d_in from "../../../generated/liana/schemas/fs_unrestricted_path/data.js"
 import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
 
-export namespace interface_ {
+
     export type Node_Path = p_i.Transformer<
         d_in.Node_Path,
         d_out.Text
@@ -14,4 +14,4 @@ export namespace interface_ {
         d_in.Context_Path,
         d_out.Text
     >
-}
+

@@ -6,10 +6,10 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 import type * as d_out from "../../../generated/liana/schemas/path_non_normalized/data.js"
 
 
-export namespace interface_ {
+
     export type Non_Normalized_Path = p_i.Production_Without_Error<
         d_out.Non_Normalized_Path,
         number,
         null
     >
-}
+
