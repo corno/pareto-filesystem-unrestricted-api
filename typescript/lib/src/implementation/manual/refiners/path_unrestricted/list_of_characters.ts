@@ -1,4 +1,4 @@
-import * as p_i from 'pareto-core/interface/refiner'
+import type * as p_i from 'pareto-core/interface/refiner'
 
 import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
 import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"

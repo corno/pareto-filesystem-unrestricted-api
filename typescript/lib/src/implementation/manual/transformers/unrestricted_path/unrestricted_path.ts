@@ -1,4 +1,4 @@
-import * as p_di from 'pareto-core/interface/data'
+import type * as p_di from 'pareto-core/interface/data'
 import * as p_ from 'pareto-core/implementation/transformer'
 
 import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"

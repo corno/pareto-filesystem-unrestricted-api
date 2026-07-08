@@ -1,4 +1,4 @@
-import * as p_i from 'pareto-core/interface/transformer'
+import type * as p_i from 'pareto-core/interface/transformer'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
 //data types

@@ -1,4 +1,4 @@
-import * as p_i from 'pareto-core/interface/refiner'
+import type * as p_i from 'pareto-core/interface/refiner'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //data types

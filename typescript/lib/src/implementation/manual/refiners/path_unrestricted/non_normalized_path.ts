@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/implementation/refiner'
 import * as p_t from 'pareto-core/implementation/transformer'
-import * as p_i from 'pareto-core/interface/refiner'
+import type * as p_i from 'pareto-core/interface/refiner'
 
 import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
 import type * as d_in from "../../../../interface/generated/liana/schemas/path_non_normalized/data.js"
@@ -16,6 +16,7 @@ export type Error =
     | ['no node', null]
 
 export namespace interface_ {
+    
     export type Node_Path = p_i.Refiner_With_Parameter<
         d_out.Node_Path,
         Error,
