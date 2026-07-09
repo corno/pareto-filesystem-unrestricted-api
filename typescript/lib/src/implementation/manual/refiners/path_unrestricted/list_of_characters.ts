@@ -1,6 +1,6 @@
 
 
-import type * as interface_ from "../../../../interface/declarations/refiners/path_unrestricted/list_of_characters.js"
+import type * as interface_ from "../../../../declarations/refiners/path_unrestricted/list_of_characters.js"
 
 import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
 import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"

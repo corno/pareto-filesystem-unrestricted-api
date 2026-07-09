@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/command'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 
-import type * as interface_ from "../../../interface/declarations/commands.js"
+import type * as interface_ from "../../../declarations/commands.js"
 
 //data types
 import type * as d_write_directory_content from "../../../interface/data/write_directory_content.js"

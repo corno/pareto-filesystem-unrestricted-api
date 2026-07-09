@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/refiner'
 import * as p_t from 'pareto-core/implementation/transformer'
 
-import type * as interface_ from "../../../../interface/declarations/refiners/path_unrestricted/non_normalized_path.js"
+import type * as interface_ from "../../../../declarations/refiners/path_unrestricted/non_normalized_path.js"
 
 import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
 import type * as d_in from "../../../../interface/generated/liana/schemas/path_non_normalized/data.js"

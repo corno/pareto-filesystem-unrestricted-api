@@ -1,6 +1,6 @@
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-import type * as interface_ from "../../../../interface/declarations/refiners/path_unrestricted/text.js"
+import type * as interface_ from "../../../../declarations/refiners/path_unrestricted/text.js"
 
 //data types
 import type * as d_out from "../../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
