@@ -1,6 +1,6 @@
 import * as p_qi from 'pareto-core/interface/query_implementation'
 
-import * as query_interfaces from "../interface/queries.js"
+import type * as query_interfaces from "../interface/queries.js"
 
 export namespace queries {
     /**
