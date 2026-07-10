@@ -4,7 +4,7 @@ import type * as interface_ from "../../../declarations/refiners/path_unrestrict
 
 //data types
 import type * as d_out from "../../../interface/data/fs_unrestricted_path.js"
-import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
+import type * as d_in from "pareto-fountain-pen/interface/data/text"
 
 //dependencies
 import * as r_from_list_of_characters from "./list_of_characters.js"

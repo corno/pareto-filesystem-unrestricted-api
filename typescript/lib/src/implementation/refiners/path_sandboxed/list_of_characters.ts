@@ -2,7 +2,7 @@
 // import p_text_from_list from 'pareto-core/implementation/refiner/specials/text_from_list'
 
 // import type * as d_out from "../../../interface/data/fs_sandboxed_path.js"
-// import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
+// import type * as d_in from "pareto-fountain-pen/interface/data/list_of_characters"
 // import type * as d_error from "./non_normalized_path.js"
 // import type * as d_function from "../../../interface/data/sandboxed_path_from_non_normalized_path.js"
 

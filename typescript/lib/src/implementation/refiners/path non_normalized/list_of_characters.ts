@@ -2,7 +2,7 @@ import type * as p_t from 'pareto-core/interface/transformer'
 import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 import type * as d_out from "../../../interface/data/path_non_normalized.js"
-import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
+import type * as d_in from "pareto-fountain-pen/interface/data/list_of_characters"
 
 //dependencies
 import * as pr_path from "./character.js"

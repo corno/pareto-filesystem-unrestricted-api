@@ -3,7 +3,7 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 
 //data types
 import type * as d_out from "../../../interface/data/path_non_normalized.js"
-import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
+import type * as d_in from "pareto-fountain-pen/interface/data/text"
 
 //dependencies
 import * as t_from_list_of_characters from "./list_of_characters.js"
