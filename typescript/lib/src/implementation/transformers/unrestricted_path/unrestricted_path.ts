@@ -1,8 +1,8 @@
 import type * as p_di from 'pareto-core/interface/data'
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import type * as d_out from "../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
-import type * as d_in from "../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
+import type * as d_out from "../../../interface/data/fs_unrestricted_path.js"
+import type * as d_in from "../../../interface/data/fs_unrestricted_path.js"
 
 export const extend_context_path_with_single_step = (
     $: d_in.Context_Path,

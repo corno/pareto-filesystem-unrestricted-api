@@ -3,7 +3,7 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 import type * as interface_ from "../../../declarations/refiners/path_unrestricted/text.js"
 
 //data types
-import type * as d_out from "../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
+import type * as d_out from "../../../interface/data/fs_unrestricted_path.js"
 import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/text/data"
 
 //dependencies

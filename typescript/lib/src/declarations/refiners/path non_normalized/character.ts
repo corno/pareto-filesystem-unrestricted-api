@@ -1,7 +1,7 @@
 import type * as p_ from 'pareto-core/interface/refiner'
 
 //data types
-import type * as d_out from "../../../interface/generated/liana/schemas/path_non_normalized/data.js"
+import type * as d_out from "../../../interface/data/path_non_normalized.js"
 
 
 

@@ -2,7 +2,7 @@
 import type * as p_ from 'pareto-core/interface/transformer'
 
 //data types
-import type * as d_in from "../../../interface/generated/liana/schemas/fs_unrestricted_stat/data.js"
+import type * as d_in from "../../../interface/data/fs_unrestricted_stat.js"
 import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
 
 

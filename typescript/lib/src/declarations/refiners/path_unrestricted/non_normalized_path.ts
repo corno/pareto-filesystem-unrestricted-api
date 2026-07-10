@@ -1,8 +1,8 @@
 
 import type * as p_ from 'pareto-core/interface/refiner'
 
-import type * as d_out from "../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
-import type * as d_in from "../../../interface/generated/liana/schemas/path_non_normalized/data.js"
+import type * as d_out from "../../../interface/data/fs_unrestricted_path.js"
+import type * as d_in from "../../../interface/data/path_non_normalized.js"
 
 export type Error =
     | ['trailing slash not allowed', null]

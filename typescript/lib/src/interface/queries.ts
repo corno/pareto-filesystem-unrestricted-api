@@ -1,9 +1,9 @@
 import * as p_ from 'pareto-core/interface/query_interface'
 
-import type * as d_fs_unrestricted_read_directory from "./generated/liana/schemas/fs_unrestricted_read_directory/data.js"
-import type * as d_fs_unrestricted_read_file from "./generated/liana/schemas/fs_unrestricted_read_file/data.js"
-import type * as d_fs_unrestricted_stat from "./generated/liana/schemas/fs_unrestricted_stat/data.js"
-import type * as d_fs_unrestricted_stat_possible_node from "./generated/liana/schemas/fs_unrestricted_stat_possible_node/data.js"
+import type * as d_fs_unrestricted_read_directory from "./data/fs_unrestricted_read_directory.js"
+import type * as d_fs_unrestricted_read_file from "./data/fs_unrestricted_read_file.js"
+import type * as d_fs_unrestricted_stat from "./data/fs_unrestricted_stat.js"
+import type * as d_fs_unrestricted_stat_possible_node from "./data/fs_unrestricted_stat_possible_node.js"
 import type * as d_read_directory_content from "./data/read_directory_content.js"
 import type * as d_read_directory_structure from "./data/read_directory_structure.js"
 

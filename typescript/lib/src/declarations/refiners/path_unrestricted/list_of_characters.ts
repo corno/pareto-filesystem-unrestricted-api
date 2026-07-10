@@ -1,6 +1,6 @@
 import type * as p_ from 'pareto-core/interface/refiner'
 
-import type * as d_out from "../../../interface/generated/liana/schemas/fs_unrestricted_path/data.js"
+import type * as d_out from "../../../interface/data/fs_unrestricted_path.js"
 import type * as d_in from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
 import type * as d_function from "./non_normalized_path.js"
 
