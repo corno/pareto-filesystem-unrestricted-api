@@ -3,7 +3,7 @@ import p_super_query_result from 'pareto-core/implementation/query/super_query_r
 
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import type * as d_read_directory_content from "../../interface/schemas/read_directory_content.js"
+import type * as s_read_directory_content from "../../interface/schemas/read_directory_content.js"
 
 import type * as interface_ from "../../declarations/queries.js"
 
@@ -15,7 +15,7 @@ export const $$: interface_.queries.read_directory_content = p_.query(
         {
             'path': $d.path,
         },
-        ($): d_read_directory_content.Error => ['read directory', $],
+        ($): s_read_directory_content.Error => ['read directory', $],
     )).query(
         ($) => p_.e.dictionary(
             $,
@@ -25,7 +25,7 @@ export const $$: interface_.queries.read_directory_content = p_.query(
                     switch ($[0]) {
                         case 'file': return p_.option($, ($) => p_super_query_result($q['read file'](
                             path,
-                            ($): d_read_directory_content.Node_Error => ['file', $],
+                            ($): s_read_directory_content.Node_Error => ['file', $],
                         )).transform(
                             ($) => ['file', p_text_from_list(
                                 $, ($) => $
@@ -37,7 +37,7 @@ export const $$: interface_.queries.read_directory_content = p_.query(
                             {
                                 'path': t_path_to_path.deprecated_node_path_to_context_path(path),
                             },
-                            ($): d_read_directory_content.Node_Error => ['directory', $]
+                            ($): s_read_directory_content.Node_Error => ['directory', $]
                         )).transform(
                             ($) => ['directory', $]))
                         case 'other': return p_.option($, ($) => p_.e.direct_result(['other', null]))
@@ -45,7 +45,7 @@ export const $$: interface_.queries.read_directory_content = p_.query(
                     }
                 })
             },
-            ($): d_read_directory_content.Error => ['directory content processing', $],
+            ($): s_read_directory_content.Error => ['directory content processing', $],
         )
     )
 )

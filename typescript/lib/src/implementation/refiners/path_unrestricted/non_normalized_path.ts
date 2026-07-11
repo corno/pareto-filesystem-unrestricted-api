@@ -3,11 +3,11 @@ import * as p_t from 'pareto-core/implementation/transformer'
 
 import type * as interface_ from "../../../declarations/refiners/path_unrestricted/non_normalized_path.js"
 
-import type * as d_out from "../../../interface/schemas/fs_unrestricted_path.js"
-import type * as d_in from "../../../interface/schemas/path_non_normalized.js"
+import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
+import type * as s_in from "../../../interface/schemas/path_non_normalized.js"
 
 type Intermediate_Result = {
-    subppath: d_out.Context_Subpath
+    subppath: s_out.Context_Subpath
     node: string | null
     up_steps: number
 }
@@ -95,13 +95,13 @@ export const Node_Path: interface_.Node_Path = ($, abort, $p) => {
 }
 
 type Intermediate_Result2 = {
-    subppath: d_out.Context_Subpath
+    subppath: s_out.Context_Subpath
     up_steps: number
 }
 
 export const Context_Path = (
-    $: d_in.Non_Normalized_Path,
-): d_out.Context_Path => {
+    $: s_in.Non_Normalized_Path,
+): s_out.Context_Path => {
 
     let intermediate_result: Intermediate_Result2 = {
 

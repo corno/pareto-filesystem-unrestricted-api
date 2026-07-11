@@ -1,13 +1,13 @@
 
-// import type * as d_out from "../../../interface/schemas/fs_sandboxed_path.js"
-// import type * as d_in from "../../../interface/schemas/path_non_normalized.js"
-// import type * as d_function from "../../../interface/schemas/sandboxed_path_from_non_normalized_path.js"
+// import type * as s_out from "../../../interface/schemas/fs_sandboxed_path.js"
+// import type * as s_in from "../../../interface/schemas/path_non_normalized.js"
+// import type * as s_function from "../../../interface/schemas/sandboxed_path_from_non_normalized_path.js"
 
 // import { remove_last_element } from "../../../temp/temp_core.js"
 
 
 // type Intermediate_Result = {
-//     subppath: d_out.Context_Subpath
+//     subppath: s_out.Context_Subpath
 //     node: string | null
 //     up_steps: number
 // }
@@ -20,7 +20,7 @@
 
 // export namespace interface_ {
 //     export type Node_Path = p_i.Refiner_With_Parameter<
-// d_out.Node_Path, Error, d_in.Non_Normalized_Path, { 'pedantic': boolean }
+// s_out.Node_Path, Error, s_in.Non_Normalized_Path, { 'pedantic': boolean }
 // >
 // }
 
@@ -96,12 +96,12 @@
 // }
 
 // type Intermediate_Result2 = {
-//     subppath: d_out.Context_Subpath
+//     subppath: s_out.Context_Subpath
 //     up_steps: number
 // }
 
 // export const Context_Path: p_i.Refiner<
-// d_out.Context_Path, d_function.Error, d_in.Non_Normalized_Path
+// s_out.Context_Path, s_function.Error, s_in.Non_Normalized_Path
 // > = (
 //     $,
 //     abort,

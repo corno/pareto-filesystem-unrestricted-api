@@ -5,7 +5,7 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 import type * as interface_ from "../../declarations/commands.js"
 
 //data types
-import type * as d_write_directory_content from "../../interface/schemas/write_directory_content.js"
+import type * as s_write_directory_content from "../../interface/schemas/write_directory_content.js"
 
 //dependencies
 import * as t_path_to_path from "../transformers/unrestricted_path/unrestricted_path.js"
@@ -18,7 +18,7 @@ export const $$: interface_.write_directory_content = p_.command(
         // ),
         p_.s.dictionary(
             $d.directory,
-            ($, id): p_.Command_Block<d_write_directory_content.Node_Error> => [
+            ($, id): p_.Command_Block<s_write_directory_content.Node_Error> => [
                 p_.decide.state($, ($) => {
                     switch ($[0]) {
                         case 'other': return p_.option($, ($) => [
@@ -33,7 +33,7 @@ export const $$: interface_.write_directory_content = p_.command(
                                         ($) => $
                                     ),
                                 },
-                                ($): d_write_directory_content.Node_Error => ['file', $]
+                                ($): s_write_directory_content.Node_Error => ['file', $]
                             )
                         ])
                         case 'directory': return p_.option($, ($) => [
@@ -42,7 +42,7 @@ export const $$: interface_.write_directory_content = p_.command(
                                     'directory': $,
                                     'path': t_path_to_path.extend_context_path_with_single_step($d.path, { 'addition': id }),
                                 },
-                                ($): d_write_directory_content.Node_Error => ['directory', $]
+                                ($): s_write_directory_content.Node_Error => ['directory', $]
 
                             )
                         ])
@@ -51,7 +51,7 @@ export const $$: interface_.write_directory_content = p_.command(
                     }
                 })
             ],
-            ($): d_write_directory_content.Error => ['directory content', $]
+            ($): s_write_directory_content.Error => ['directory content', $]
         )
     ]
 )

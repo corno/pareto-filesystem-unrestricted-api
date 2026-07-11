@@ -1,16 +1,16 @@
 import type * as p_t from 'pareto-core/interface/transformer'
 import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
-import type * as d_out from "../../../interface/schemas/path_non_normalized.js"
-import type * as d_in from "pareto-fountain-pen/interface/data/list_of_characters"
+import type * as s_out from "../../../interface/schemas/path_non_normalized.js"
+import type * as s_in from "pareto-fountain-pen/interface/data/list_of_characters"
 
 //dependencies
 import * as pr_path from "./character.js"
 
 
 export const Non_Normalized_Path: p_t.Transformer<
-    d_in.List_of_Characters,
-    d_out.Non_Normalized_Path
+    s_in.List_of_Characters,
+    s_out.Non_Normalized_Path
 > = ($) => p_iterate({
     list: $,
     end_info: null,

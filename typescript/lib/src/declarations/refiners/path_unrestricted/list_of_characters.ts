@@ -1,18 +1,18 @@
 import type * as p_ from 'pareto-core/interface/refiner'
 
-import type * as d_out from "../../../interface/schemas/fs_unrestricted_path.js"
-import type * as d_in from "pareto-fountain-pen/interface/data/list_of_characters"
-import type * as d_function from "./non_normalized_path.js"
+import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
+import type * as s_in from "pareto-fountain-pen/interface/data/list_of_characters"
+import type * as s_function from "./non_normalized_path.js"
 
-export namespace d_function2 {
+export namespace s_function2 {
     export type Parameters = { 'pedantic': boolean }
 
 }
 
 export type Node_Path = p_.Refiner_With_Parameter<
-    d_out.Node_Path,
-    d_function.Error,
-    d_in.List_of_Characters,
-    d_function2.Parameters
+    s_out.Node_Path,
+    s_function.Error,
+    s_in.List_of_Characters,
+    s_function2.Parameters
 >
 

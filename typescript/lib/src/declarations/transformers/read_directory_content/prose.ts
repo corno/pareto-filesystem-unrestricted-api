@@ -1,16 +1,16 @@
 
 import type * as p_ from 'pareto-core/interface/transformer'
 
-import type * as d_in from "../../../interface/schemas/read_directory_content.js"
-import type * as d_out from "pareto-fountain-pen/interface/data/prose"
+import type * as s_in from "../../../interface/schemas/read_directory_content.js"
+import type * as s_out from "pareto-fountain-pen/interface/data/prose"
 
 
 export type Error = p_.Transformer<
-    d_in.Error, d_out.Phrase
+    s_in.Error, s_out.Phrase
 >
 export type Node_Error = p_.Transformer<
-    d_in.Node_Error,
-    d_out.Phrase
+    s_in.Node_Error,
+    s_out.Phrase
 >
 
 

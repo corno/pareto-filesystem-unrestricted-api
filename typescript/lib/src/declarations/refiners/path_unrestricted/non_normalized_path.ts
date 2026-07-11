@@ -1,8 +1,8 @@
 
 import type * as p_ from 'pareto-core/interface/refiner'
 
-import type * as d_out from "../../../interface/schemas/fs_unrestricted_path.js"
-import type * as d_in from "../../../interface/schemas/path_non_normalized.js"
+import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
+import type * as s_in from "../../../interface/schemas/path_non_normalized.js"
 
 export type Error =
     | ['trailing slash not allowed', null]
@@ -11,9 +11,9 @@ export type Error =
 
 
 export type Node_Path = p_.Refiner_With_Parameter<
-    d_out.Node_Path,
+    s_out.Node_Path,
     Error,
-    d_in.Non_Normalized_Path,
+    s_in.Non_Normalized_Path,
     { 'pedantic': boolean }
 >
 
