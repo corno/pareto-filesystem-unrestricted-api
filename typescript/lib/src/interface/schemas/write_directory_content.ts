@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/interface/data'
 // import type * as d_make_directory from "./generated/liana/schemas/make_directory.js"
 import type * as d_write_file from "./fs_unrestricted_write_file.js"
 import type * as d_path from "./fs_unrestricted_path.js"
-import type * as d_directory_contents from "../data/directory_content.js"
+import type * as d_directory_contents from "../schemas/directory_content.js"
 
 export type Parameters = {
     'path': d_path.Context_Path,

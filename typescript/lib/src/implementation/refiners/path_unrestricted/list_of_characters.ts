@@ -2,7 +2,7 @@
 
 import type * as interface_ from "../../../declarations/refiners/path_unrestricted/list_of_characters.js"
 
-import type * as d_out from "../../../interface/data/fs_unrestricted_path.js"
+import type * as d_out from "../../../interface/schemas/fs_unrestricted_path.js"
 import type * as d_in from "pareto-fountain-pen/interface/data/list_of_characters"
 
 

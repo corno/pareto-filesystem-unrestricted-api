@@ -1,7 +1,7 @@
 
-// import type * as d_out from "../../../interface/data/fs_sandboxed_path.js"
-// import type * as d_in from "../../../interface/data/path_non_normalized.js"
-// import type * as d_function from "../../../interface/data/sandboxed_path_from_non_normalized_path.js"
+// import type * as d_out from "../../../interface/schemas/fs_sandboxed_path.js"
+// import type * as d_in from "../../../interface/schemas/path_non_normalized.js"
+// import type * as d_function from "../../../interface/schemas/sandboxed_path_from_non_normalized_path.js"
 
 // import { remove_last_element } from "../../../temp/temp_core.js"
 

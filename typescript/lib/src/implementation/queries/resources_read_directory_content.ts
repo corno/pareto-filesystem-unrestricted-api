@@ -3,7 +3,7 @@ import p_super_query_result from 'pareto-core/implementation/query/super_query_r
 
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import type * as d_read_directory_content from "../../interface/data/read_directory_content.js"
+import type * as d_read_directory_content from "../../interface/schemas/read_directory_content.js"
 
 import type * as interface_ from "../../declarations/queries.js"
 

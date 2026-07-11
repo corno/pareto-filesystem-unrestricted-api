@@ -1,8 +1,8 @@
 import * as p_ from 'pareto-core/implementation/query'
 import p_super_query_result from 'pareto-core/implementation/query/super_query_result'
 
-import type * as d_directory_structure from "../../interface/data/directory_structure.js"
-import type * as d_read_directory_structure from "../../interface/data/read_directory_structure.js"
+import type * as d_directory_structure from "../../interface/schemas/directory_structure.js"
+import type * as d_read_directory_structure from "../../interface/schemas/read_directory_structure.js"
 
 import type * as interface_ from "../../declarations/queries.js"
 

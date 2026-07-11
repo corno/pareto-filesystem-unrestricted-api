@@ -1,7 +1,7 @@
 // import * as p_ from 'pareto-core/implementation/transformer'
 
-// import type * as d_out from "../../../interface/data/fs_sandboxed_path.js"
-// import type * as d_in from "../../../interface/data/fs_sandboxed_path.js"
+// import type * as d_out from "../../../interface/schemas/fs_sandboxed_path.js"
+// import type * as d_in from "../../../interface/schemas/fs_sandboxed_path.js"
 
 // export const extend_context_path_with_single_step = (
 //     $: d_in.Context_Path,

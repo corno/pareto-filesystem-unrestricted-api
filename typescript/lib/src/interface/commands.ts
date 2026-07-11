@@ -1,11 +1,11 @@
 import * as p_ from 'pareto-core/interface/command_interface'
 
-import type * as d_fs_unrestricted_chmod from "./data/fs_unrestricted_chmod.js"
-import type * as d_fs_unrestricted_copy from "./data/fs_unrestricted_copy.js"
-import type * as d_fs_unrestricted_make_directory from "./data/fs_unrestricted_make_directory.js"
-import type * as d_fs_unrestricted_remove from "./data/fs_unrestricted_remove.js"
-import type * as d_fs_unrestricted_write_file from "./data/fs_unrestricted_write_file.js"
-import type * as d_write_directory_content from "./data/write_directory_content.js"
+import type * as d_fs_unrestricted_chmod from "./schemas/fs_unrestricted_chmod.js"
+import type * as d_fs_unrestricted_copy from "./schemas/fs_unrestricted_copy.js"
+import type * as d_fs_unrestricted_make_directory from "./schemas/fs_unrestricted_make_directory.js"
+import type * as d_fs_unrestricted_remove from "./schemas/fs_unrestricted_remove.js"
+import type * as d_fs_unrestricted_write_file from "./schemas/fs_unrestricted_write_file.js"
+import type * as d_write_directory_content from "./schemas/write_directory_content.js"
 
 export type chmod = p_.Command_Interface<
     d_fs_unrestricted_chmod.Error,

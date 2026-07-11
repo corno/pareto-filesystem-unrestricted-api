@@ -1,11 +1,11 @@
 import * as p_ from 'pareto-core/interface/query_interface'
 
-import type * as d_fs_unrestricted_read_directory from "./data/fs_unrestricted_read_directory.js"
-import type * as d_fs_unrestricted_read_file from "./data/fs_unrestricted_read_file.js"
-import type * as d_fs_unrestricted_stat from "./data/fs_unrestricted_stat.js"
-import type * as d_fs_unrestricted_stat_possible_node from "./data/fs_unrestricted_stat_possible_node.js"
-import type * as d_read_directory_content from "./data/read_directory_content.js"
-import type * as d_read_directory_structure from "./data/read_directory_structure.js"
+import type * as d_fs_unrestricted_read_directory from "./schemas/fs_unrestricted_read_directory.js"
+import type * as d_fs_unrestricted_read_file from "./schemas/fs_unrestricted_read_file.js"
+import type * as d_fs_unrestricted_stat from "./schemas/fs_unrestricted_stat.js"
+import type * as d_fs_unrestricted_stat_possible_node from "./schemas/fs_unrestricted_stat_possible_node.js"
+import type * as d_read_directory_content from "./schemas/read_directory_content.js"
+import type * as d_read_directory_structure from "./schemas/read_directory_structure.js"
 
 export type read_directory = p_.Query_Interface<
     d_fs_unrestricted_read_directory.Result,
