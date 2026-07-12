@@ -2,7 +2,7 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 
 import type * as interface_ from "../../../declarations/refiners/path_unrestricted/text.js"
 
-//data types
+//schemas
 import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
 import type * as s_in from "pareto-fountain-pen/interface/data/text"
 

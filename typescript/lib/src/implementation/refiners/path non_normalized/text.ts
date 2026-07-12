@@ -1,7 +1,7 @@
 import type * as p_ti from 'pareto-core/interface/transformer'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-//data types
+//schemas
 import type * as s_out from "../../../interface/schemas/path_non_normalized.js"
 import type * as s_in from "pareto-fountain-pen/interface/data/text"
 
