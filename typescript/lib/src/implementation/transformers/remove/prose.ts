@@ -1,6 +1,15 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import type * as interface_ from "../../../declarations/transformers/remove/prose.js"
+//schemas
+import type * as s_in from "../../../interface/schemas/fs_unrestricted_remove.js"
+import type * as s_out from "../../../interface/schemas/prose.js"
+
+namespace declarations {
+    export type Error = p_.Transformer<
+        s_in.Error,
+        s_out.Phrase
+    >
+}
 
 //dependencies
 import * as t_path_to_text from "../unrestricted_path/deprecated_list_of_characters.js"
@@ -8,7 +17,7 @@ import * as t_path_to_text from "../unrestricted_path/deprecated_list_of_charact
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
-export const Error: interface_.Error = ($) => sh.ph.composed([
+export const Error: declarations.Error = ($) => sh.ph.composed([
     p_.from.state($.type).decide(
         ($) => {
             switch ($[0]) {

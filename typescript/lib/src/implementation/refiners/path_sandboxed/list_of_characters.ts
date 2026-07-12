@@ -2,7 +2,7 @@
 // import p_text_from_list from 'pareto-core/implementation/refiner/specials/text_from_list'
 
 // import type * as s_out from "../../../interface/schemas/fs_sandboxed_path.js"
-// import type * as s_in from "pareto-fountain-pen/interface/data/list_of_characters"
+// import type * as s_in from "../../../interface/schemas/list_of_characters.js"
 // import type * as s_error from "./non_normalized_path.js"
 // import type * as s_function from "../../../interface/schemas/sandboxed_path_from_non_normalized_path.js"
 

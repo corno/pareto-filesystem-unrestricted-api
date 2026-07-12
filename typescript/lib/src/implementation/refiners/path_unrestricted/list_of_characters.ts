@@ -2,13 +2,13 @@
 
 import type * as interface_ from "../../../declarations/refiners/path_unrestricted/list_of_characters.js"
 
+//schemas
+import type * as s_in from "../../../interface/schemas/list_of_characters.js"
 import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
-import type * as s_in from "pareto-fountain-pen/interface/data/list_of_characters"
-
 
 //dependencies
 import * as r_from_non_normalized_path from "./non_normalized_path.js"
-import * as r_non_normalized_path_from_loc from "../path non_normalized/list_of_characters.js"
+import * as r_non_normalized_path_from_loc from "../path_non_normalized/list_of_characters.js"
 
 export const Node_Path: interface_.Node_Path = ($, abort, $p) => {
     return r_from_non_normalized_path.Node_Path(

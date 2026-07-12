@@ -2,9 +2,22 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-import type * as interface_ from "../../../declarations/transformers/unrestricted_path/deprecated_list_of_characters.js"
+//schemas
+import type * as s_in from "../../../interface/schemas/fs_unrestricted_path.js"
+import type * as s_out from "../../../interface/schemas/list_of_characters.js"
 
-export const Node_Path: interface_.Node_Path = ($) => p_.literal.segmented_list([
+namespace declarations {
+    export type Node_Path = p_.Transformer<
+        s_in.Node_Path,
+        s_out.List_of_Characters
+    >
+    export type Context_Path = p_.Transformer<
+        s_in.Context_Path,
+        s_out.List_of_Characters
+    >
+}
+
+export const Node_Path: declarations.Node_Path = ($) => p_.literal.segmented_list([
     Context_Path($.context),
     p_.literal.list([
         47, // '/'
@@ -15,7 +28,7 @@ export const Node_Path: interface_.Node_Path = ($) => p_.literal.segmented_list(
     )
 ])
 
-export const Context_Path: interface_.Context_Path = ($) => p_.literal.segmented_list([
+export const Context_Path: declarations.Context_Path = ($) => p_.literal.segmented_list([
     p_list_build_deprecated(
         ($i) => {
             p_.from.state($.start).decide(
