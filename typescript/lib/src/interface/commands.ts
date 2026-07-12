@@ -27,9 +27,3 @@ export type write_file = p_.Command_Interface<
     s_fs_unrestricted_write_file.Error,
     s_fs_unrestricted_write_file.Parameters
 >
-
-//this one is not part of the API
-export type write_directory_content = p_.Command_Interface<
-    s_write_directory_content.Error,
-    s_write_directory_content.Parameters
->

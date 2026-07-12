@@ -1,8 +1,8 @@
 import * as p_ from 'pareto-core/implementation/command'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-
-import type * as interface_ from "../../declarations/commands.js"
+//interface dependencies
+import type * as command_interfaces from "../../interface/commands.js"
 
 //schemas
 import type * as s_write_directory_content from "../../interface/schemas/write_directory_content.js"
@@ -10,7 +10,19 @@ import type * as s_write_directory_content from "../../interface/schemas/write_d
 //dependencies
 import * as t_path_to_path from "../transformers/unrestricted_path/unrestricted_path.js"
 
-export const $$: interface_.write_directory_content = p_.command(
+export const $$: p_.Command_Implementation<
+    p_.Command_Interface<
+        s_write_directory_content.Error,
+        s_write_directory_content.Parameters
+    >,
+    null,
+    null,
+    {
+        // 'make directory': resources_pareto.commands.make_directory
+        'write file': command_interfaces.write_file
+
+    }
+> = p_.command(
     ($d, $s, $q, $c) => [
         // $c['make directory'].execute(
         //     $p.path,
