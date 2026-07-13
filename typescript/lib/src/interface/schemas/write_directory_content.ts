@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/data'
+import * as p_ from 'pareto-core/interface/schema'
 
 // import type * as s_make_directory from "./generated/liana/schemas/make_directory.js"
 import type * as s_write_file from "./fs_unrestricted_write_file.js"

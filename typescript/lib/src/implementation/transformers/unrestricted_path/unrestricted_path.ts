@@ -1,4 +1,4 @@
-import type * as p_di from 'pareto-core/interface/data'
+import type * as p_di from 'pareto-core/interface/schema'
 import * as p_ from 'pareto-core/implementation/transformer'
 
 //schemas
