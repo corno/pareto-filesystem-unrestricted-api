@@ -10,7 +10,7 @@ import * as pr_path from "./character.js"
 
 
 export const Non_Normalized_Path: p_t.Transformer<
-    s_in.List_of_Characters,
+    s_in.List_Of_Characters,
     s_out.Non_Normalized_Path
 > = ($) => p_iterate({
     list: $,

@@ -10,7 +10,7 @@
 
 // export namespace interface_ {
 //     export type Node_Path = p_i.Refiner_With_Parameter<
-// s_out.Node_Path, s_error.Error, s_in.List_of_Characters, Parameters
+// s_out.Node_Path, s_error.Error, s_in.List_Of_Characters, Parameters
 // >
 // }
 
@@ -28,7 +28,7 @@
 // }
 
 // export const Context_Path: p_i.Refiner<
-// s_out.Context_Path, s_function.Error, s_in.List_of_Characters
+// s_out.Context_Path, s_function.Error, s_in.List_Of_Characters
 // > = (
 //     $,
 //     abort,

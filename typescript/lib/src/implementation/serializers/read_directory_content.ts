@@ -1,23 +1,20 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/implementation/serializer'
 
 //schemas
-import type * as s_in from "../../../interface/schemas/read_directory_content.js"
-import type * as s_out from "../../../interface/schemas/prose.js"
+import type * as s_in from "../../interface/schemas/read_directory_content.js"
 
 namespace declarations {
-    export type Error = p_.Transformer<
-        s_in.Error,
-        s_out.Phrase
+    export type Error = p_.Phrase_Serializer<
+        s_in.Error
     >
-    export type Node_Error = p_.Transformer<
-        s_in.Node_Error,
-        s_out.Phrase
+    export type Node_Error = p_.Phrase_Serializer<
+        s_in.Node_Error
     >
 }
 
 //dependencies
-import * as t_read_directory_to_prose from "../read_directory/prose.js"
-import * as t_read_file_to_prose from "../read_file/prose.js"
+import * as t_read_directory_to_prose from "./read_directory.js"
+import * as t_read_file_to_prose from "./read_file.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"

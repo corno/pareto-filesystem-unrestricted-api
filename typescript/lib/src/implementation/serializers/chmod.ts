@@ -1,18 +1,16 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/implementation/serializer'
 
 //schemas
-import type * as s_in from "../../../interface/schemas/fs_unrestricted_chmod.js"
-import type * as s_out from "../../../interface/schemas/prose.js"
+import type * as s_in from "../../interface/schemas/fs_unrestricted_chmod.js"
 
 namespace declarations {
-    export type Error = p_.Transformer<
-        s_in.Error,
-        s_out.Phrase
+    export type Error = p_.Phrase_Serializer<
+        s_in.Error
     >
 }
 
 //dependencies
-import * as t_path_to_text from "../unrestricted_path/deprecated_list_of_characters.js"
+import * as t_path_to_text from "./unrestricted_path.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
@@ -28,5 +26,5 @@ export const Error: declarations.Error = ($) => sh.ph.composed([
             }
         }),
     sh.ph.literal(": "),
-    sh.ph.serialize(t_path_to_text.Node_Path($.path)),
+    t_path_to_text.Node_Path($.path),
 ])

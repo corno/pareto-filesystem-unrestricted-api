@@ -1,34 +1,38 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/implementation/serializer'
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //schemas
-import type * as s_in from "../../../interface/schemas/fs_unrestricted_path.js"
-import type * as s_out from "../../../interface/schemas/list_of_characters.js"
+import type * as s_in from "../../interface/schemas/fs_unrestricted_path.js"
+import type * as s_out from "../../interface/schemas/list_of_characters.js"
 
 namespace declarations {
-    export type Node_Path = p_.Transformer<
-        s_in.Node_Path,
-        s_out.List_of_Characters
+    export type Node_Path = p_.Phrase_Serializer<
+        s_in.Node_Path
     >
-    export type Context_Path = p_.Transformer<
-        s_in.Context_Path,
-        s_out.List_of_Characters
+    export type Context_Path = p_.Phrase_Serializer<
+        s_in.Context_Path
     >
 }
 
-export const Node_Path: declarations.Node_Path = ($) => p_.literal.segmented_list([
+import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+
+export const Node_Path: declarations.Node_Path = ($) => sh.ph.composed([
     Context_Path($.context),
-    p_.literal.list([
-        47, // '/'
-    ]),
-    p_list_from_text(
-        $.node,
-        ($) => $
+    sh.ph.list_of_characters(
+        p_.literal.segmented_list([
+            p_.literal.list([
+                47, // '/'
+            ]),
+            p_list_from_text(
+                $.node,
+                ($) => $
+            )
+        ])
     )
 ])
 
-export const Context_Path: declarations.Context_Path = ($) => p_.literal.segmented_list([
+export const Context_Path: declarations.Context_Path = ($) => sh.ph.list_of_characters(
     p_list_build_deprecated(
         ($i) => {
             p_.from.state($.start).decide(
@@ -78,4 +82,4 @@ export const Context_Path: declarations.Context_Path = ($) => p_.literal.segment
             )
         }
     )
-])
+)

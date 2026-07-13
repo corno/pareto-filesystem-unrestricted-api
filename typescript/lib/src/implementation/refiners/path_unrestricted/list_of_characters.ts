@@ -19,7 +19,7 @@ export const Node_Path: interface_.Node_Path = ($, abort, $p) => {
 }
 
 export const Context_Path = ( //This one is exceptional because it will never produce errors
-    $: s_in.List_of_Characters,
+    $: s_in.List_Of_Characters,
 ): s_out.Context_Path => r_from_non_normalized_path.Context_Path(
     r_non_normalized_path_from_loc.Non_Normalized_Path($),
 )
