@@ -1,6 +1,6 @@
 {
   "name": "pareto-filesystem-unrestricted-api",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A library providing an unrestricted API for filesystem operations, allowing manipulation of all files and directories in the file system without the constraints of a sandboxed environment. Use this API when a sandboxed directory is not sufficient.",
@@ -15,8 +15,6 @@
     "dist"
   ],
   "dependencies": {
-    "astn-core": "^0.5.0",
-    "liana-core": "^0.1.0",
     "pareto-core": "^0.1.0",
     "pareto-core-dev": "^0.12.0",
     "pareto-fountain-pen": "^0.4.0"
