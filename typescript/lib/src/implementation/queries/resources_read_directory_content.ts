@@ -1,9 +1,9 @@
 import * as p_ from 'pareto-core/implementation/query'
 import p_super_query_result from 'pareto-core/implementation/query/super_query_result'
 
-import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
 import type * as s_read_directory_content from "../../interface/schemas/read_directory_content.js"
+import type * as s_directory_content from "../../interface/schemas/directory_content_as_read.js"
 import type * as query_interfaces from "../../interface/queries.js"
 
 //dependencies
@@ -25,7 +25,7 @@ export const $$: p_.Query_Implementation<
     )).query(
         ($) => p_.e.dictionary(
             $,
-            ($) => {
+            ($): p_.Query_Result<s_directory_content.Node, s_read_directory_content.Node_Error> => {
                 const path = $.path
                 return p_.decide.state($['node type'], ($) => {
                     switch ($[0]) {
@@ -33,9 +33,9 @@ export const $$: p_.Query_Implementation<
                             path,
                             ($): s_read_directory_content.Node_Error => ['file', $],
                         )).transform(
-                            ($) => ['file', p_text_from_list(
-                                $, ($) => $
-                            )]))
+                            ($) => ['file', {
+                                'data': $.data
+                            }]))
                         case 'directory': return p_.option($, ($) => p_super_query_result($$(
                             null,
                             $q,
@@ -45,7 +45,7 @@ export const $$: p_.Query_Implementation<
                             },
                             ($): s_read_directory_content.Node_Error => ['directory', $]
                         )).transform(
-                            ($) => ['directory', $]))
+                            ($): s_directory_content.Node => ['directory', $]))
                         case 'other': return p_.option($, ($) => p_.e.direct_result(['other', null]))
                         default: return p_.exhaustive($[0])
                     }

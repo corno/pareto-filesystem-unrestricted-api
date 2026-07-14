@@ -1,15 +1,13 @@
 
-import * as p_i from 'pareto-core/interface/__internal/Abort'
+import * as p_prose from 'pareto-core/temp/fountain_pen/prose'
 
 import * as i_imports_path from "./fs_unrestricted_path.js"
-
-import * as i_imports_list_of_characters from "./list_of_characters.js"
 
 export namespace Parameters_ {
     
     export type path = i_imports_path.Node_Path
     
-    export type data = i_imports_list_of_characters.List_Of_Characters
+    export type data = p_prose.Paragraph
     
 }
 

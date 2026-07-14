@@ -40,10 +40,7 @@ export const $$: p_.Command_Implementation<
                             $c['write file'].execute(
                                 {
                                     'path': t_path_to_path.create_node_path($d.path, { 'node': id }),
-                                    'data': p_list_from_text(
-                                        $,
-                                        ($) => $
-                                    ),
+                                    'data': $['data'],
                                 },
                                 ($): s_write_directory_content.Node_Error => ['file', $]
                             )

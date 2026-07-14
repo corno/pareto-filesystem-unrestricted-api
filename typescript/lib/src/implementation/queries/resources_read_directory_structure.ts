@@ -23,7 +23,7 @@ export const $$: p_.Query_Implementation<
     )).query(
         ($) => p_.e.dictionary(
             $,
-            ($) => {
+            ($): p_.Query_Result<s_directory_structure.Node, s_read_directory_structure.Node_Error> => {
                 const path = $.path
                 return p_.decide.state($['node type'], ($) => {
                     switch ($[0]) {

@@ -39,7 +39,9 @@ export type Error_ = {
     readonly 'type': Error_.type_
 }
 
-export type Result_ = i_imports_list_of_characters.List_Of_Characters
+export type Result_ = {
+    'data': i_imports_list_of_characters.List_Of_Characters
+}
 
 export type { 
     Parameters_ as Parameters, 

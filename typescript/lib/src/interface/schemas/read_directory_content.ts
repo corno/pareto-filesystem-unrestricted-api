@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/interface/schema'
 import type * as s_read_directory from "./fs_unrestricted_read_directory.js"
 import type * as s_read_file from "./fs_unrestricted_read_file.js"
 import type * as s_path from "./fs_unrestricted_path.js"
-import type * as s_directory_contents from "./directory_content.js"
+import type * as s_directory_contents from "./directory_content_as_read.js"
 
 
 
