@@ -13,7 +13,9 @@ export namespace Parameters_ {
 
 export type Parameters_ = {
     readonly 'path': Parameters_.path
-    readonly 'data': Parameters_.data
+    readonly 'paragraph': Parameters_.data
+    readonly 'newline': string
+    readonly 'indentation': string
 }
 
 export namespace Error_ {

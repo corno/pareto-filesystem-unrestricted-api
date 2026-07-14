@@ -5,7 +5,9 @@ import * as p_prose from 'pareto-core/temp/fountain_pen/prose'
 export type Node =
     | ['other', null]
     | ['file', {
-        'data': p_prose.Paragraph
+        'paragraph': p_prose.Paragraph
+        'newline': string
+        'indentation': string
     }]
     | ['directory', Directory]
 
