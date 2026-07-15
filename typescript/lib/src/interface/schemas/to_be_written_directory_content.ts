@@ -1,13 +1,11 @@
 import * as p_ from 'pareto-core/interface/schema'
-import * as p_prose from 'pareto-core/temp/fountain_pen/prose'
 
+import * as s_to_be_written_file_content from "./to_be_written_file_content.js"
 
 export type Node =
     | ['other', null]
     | ['file', {
-        'paragraph': p_prose.Paragraph
-        'newline': string
-        'indentation': string
+        'content': s_to_be_written_file_content.File_Content
     }]
     | ['directory', Directory]
 

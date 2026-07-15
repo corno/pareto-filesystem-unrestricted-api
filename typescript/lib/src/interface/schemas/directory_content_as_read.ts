@@ -1,5 +1,4 @@
 import * as p_ from 'pareto-core/interface/schema'
-import * as p_prose from 'pareto-core/temp/fountain_pen/prose'
 
 import type * as s_list_of_characters from "./list_of_characters.js"
 

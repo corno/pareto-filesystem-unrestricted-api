@@ -40,9 +40,7 @@ export const $$: p_.Command_Implementation<
                             $c['write file'].execute(
                                 {
                                     'path': t_path_to_path.create_node_path($d.path, { 'node': id }),
-                                    'paragraph': $['paragraph'],
-                                    'newline': $['newline'],
-                                    'indentation': $['indentation'],
+                                    'content': $.content
                                 },
                                 ($): s_write_directory_content.Node_Error => ['file', $]
                             )

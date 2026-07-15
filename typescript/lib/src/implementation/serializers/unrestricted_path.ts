@@ -7,19 +7,17 @@ import type * as s_in from "../../interface/schemas/fs_unrestricted_path.js"
 import type * as s_out from "../../interface/schemas/list_of_characters.js"
 
 namespace declarations {
-    export type Node_Path = p_.Phrase_Serializer<
+    export type Node_Path = p_.Serializer<
         s_in.Node_Path
     >
-    export type Context_Path = p_.Phrase_Serializer<
+    export type Context_Path = p_.Serializer<
         s_in.Context_Path
     >
 }
 
-import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
-
-export const Node_Path: declarations.Node_Path = ($) => sh.ph.composed([
+export const Node_Path: declarations.Node_Path = ($) => p_.ph.composed([
     Context_Path($.context),
-    sh.ph.list_of_characters(
+    p_.ph.list_of_characters(
         p_.literal.segmented_list([
             p_.literal.list([
                 47, // '/'
@@ -32,7 +30,7 @@ export const Node_Path: declarations.Node_Path = ($) => sh.ph.composed([
     )
 ])
 
-export const Context_Path: declarations.Context_Path = ($) => sh.ph.list_of_characters(
+export const Context_Path: declarations.Context_Path = ($) => p_.ph.list_of_characters(
     p_list_build_deprecated(
         ($i) => {
             p_.from.state($.start).decide(

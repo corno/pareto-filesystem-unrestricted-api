@@ -1,21 +1,18 @@
 
-import * as p_prose from 'pareto-core/temp/fountain_pen/prose'
 
 import * as i_imports_path from "./fs_unrestricted_path.js"
+import type * as s_file_content from "./to_be_written_file_content.js"
 
 export namespace Parameters_ {
     
     export type path = i_imports_path.Node_Path
     
-    export type data = p_prose.Paragraph
     
 }
 
 export type Parameters_ = {
     readonly 'path': Parameters_.path
-    readonly 'paragraph': Parameters_.data
-    readonly 'newline': string
-    readonly 'indentation': string
+    readonly 'content': s_file_content.File_Content
 }
 
 export namespace Error_ {
