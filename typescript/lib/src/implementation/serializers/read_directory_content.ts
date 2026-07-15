@@ -17,7 +17,7 @@ import * as t_read_directory_to_prose from "./read_directory.js"
 import * as t_read_file_to_prose from "./read_file.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_extended/deprecated"
 
 export const Node_Error: declarations.Node_Error = ($) => p_.from.state($).decide(
     ($) => {
