@@ -2,8 +2,8 @@ import type * as p_ from 'pareto-core/interface/refiner'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //schemas
-import type * as s_out from "../../../interface/schemas/path.js"
-import type * as s_error from "../../../interface/schemas/path_error.js"
+import type * as s_out from "../../interface/schemas/path.js"
+import type * as s_error from "../../interface/schemas/path_error.js"
 
 export namespace s_parameters {
 
@@ -22,7 +22,7 @@ export type Node_Path = p_.Refiner_With_Parameter<
 
 
 //dependencies
-import * as r_from_list_of_characters from "./list_of_characters.js"
+import * as r_from_list_of_characters from "../refiners/path/list_of_characters.js"
 
 
 export const Node_Path: Node_Path = ($, abort, $p) => {
