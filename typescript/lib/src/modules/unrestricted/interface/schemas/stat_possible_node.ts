@@ -1,7 +1,7 @@
 
 import * as p_i from 'pareto-core/interface/__internal/Abort'
 
-import * as i_imports_path from "./fs_unrestricted_path.js"
+import * as i_imports_path from "./path.js"
 
 export type Parameters_ = i_imports_path.Node_Path
 

@@ -2,7 +2,7 @@
 import type * as p_ from 'pareto-core/interface/refiner'
 
 import type * as s_in from "../../../interface/schemas/path_non_normalized.js"
-import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
+import type * as s_out from "../../../interface/schemas/path.js"
 import type * as s_error from "../../../interface/schemas/path_error.js"
 
 

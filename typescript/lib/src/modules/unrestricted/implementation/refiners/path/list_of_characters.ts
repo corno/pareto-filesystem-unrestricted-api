@@ -4,7 +4,7 @@ import type * as interface_ from "../../../declarations/refiners/path/list_of_ch
 
 //schemas
 import type * as s_in from "../../../interface/schemas/list_of_characters.js"
-import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
+import type * as s_out from "../../../interface/schemas/path.js"
 
 //dependencies
 import * as r_from_non_normalized_path from "./non_normalized_path.js"

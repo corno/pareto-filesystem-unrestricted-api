@@ -1,6 +1,6 @@
 
 
-import * as i_imports_path from "./fs_unrestricted_path.js"
+import * as i_imports_path from "./path.js"
 import type * as s_file_content from "../../../helpers/schemas/to_be_written_file_content.js"
 
 export namespace Parameters_ {

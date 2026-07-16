@@ -1,6 +1,6 @@
 // import * as p_ from 'pareto-core/implementation/transformer'
 
-// import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
+// import type * as s_out from "../../../interface/schemas/path.js"
 // import type * as s_in from "../../../interface/schemas/fs_sandboxed_path.js"
 
 // export const Context_Path: p_i.Transformer_With_Parameter<

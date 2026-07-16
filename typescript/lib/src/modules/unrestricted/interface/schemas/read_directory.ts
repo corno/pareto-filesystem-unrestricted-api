@@ -2,7 +2,7 @@
 import * as p_i from 'pareto-core/interface/__internal/Abort'
 import * as p_di from 'pareto-core/interface/schema'
 
-import * as i_imports_path from "./fs_unrestricted_path.js"
+import * as i_imports_path from "./path.js"
 
 export namespace Parameters_ {
     

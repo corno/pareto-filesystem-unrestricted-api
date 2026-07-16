@@ -3,8 +3,7 @@ import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 //schemas
-import type * as s_in from "../../interface/schemas/fs_unrestricted_path.js"
-import type * as s_out from "../../interface/schemas/list_of_characters.js"
+import type * as s_in from "../../interface/schemas/path.js"
 
 namespace declarations {
     export type Node_Path = p_.Serializer<

@@ -1,9 +1,9 @@
 import * as p_ from 'pareto-core/interface/query_interface'
 
-import type * as s_fs_unrestricted_read_directory from "./schemas/fs_unrestricted_read_directory.js"
-import type * as s_fs_unrestricted_read_file from "./schemas/fs_unrestricted_read_file.js"
-import type * as s_fs_unrestricted_stat from "./schemas/fs_unrestricted_stat.js"
-import type * as s_fs_unrestricted_stat_possible_node from "./schemas/fs_unrestricted_stat_possible_node.js"
+import type * as s_fs_unrestricted_read_directory from "./schemas/read_directory.js"
+import type * as s_fs_unrestricted_read_file from "./schemas/read_file.js"
+import type * as s_fs_unrestricted_stat from "./schemas/stat.js"
+import type * as s_fs_unrestricted_stat_possible_node from "./schemas/stat_possible_node.js"
 import type * as s_read_directory_content from "../../helpers/schemas/read_directory_content.js"
 import type * as s_read_directory_structure from "../../helpers/schemas/read_directory_structure.js"
 

@@ -5,7 +5,7 @@ import type * as interface_ from "../../../declarations/refiners/path/non_normal
 
 //schemas
 import type * as s_in from "../../../interface/schemas/path_non_normalized.js"
-import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
+import type * as s_out from "../../../interface/schemas/path.js"
 
 type Intermediate_Result = {
     subppath: s_out.Context_Subpath

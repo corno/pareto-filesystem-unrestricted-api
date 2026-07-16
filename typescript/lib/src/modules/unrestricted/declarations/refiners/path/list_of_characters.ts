@@ -1,7 +1,7 @@
 import type * as p_ from 'pareto-core/interface/refiner'
 
 import type * as s_in from "../../../interface/schemas/list_of_characters.js"
-import type * as s_out from "../../../interface/schemas/fs_unrestricted_path.js"
+import type * as s_out from "../../../interface/schemas/path.js"
 import type * as s_error from "../../../interface/schemas/path_error.js"
 
 export namespace s_parameters {

@@ -1,35 +1,35 @@
 
 import * as p_i from 'pareto-core/interface/__internal/Abort'
 
-import * as i_imports_path from "./fs_unrestricted_path.js"
+import * as i_imports_path from "./path.js"
 
 export namespace Parameters_ {
     
-    export type delete_existing = boolean
+    export type path = i_imports_path.Context_Path
     
-    export type path = i_imports_path.Node_Path
+    export type error_if_not_exists = boolean
     
 }
 
 export type Parameters_ = {
-    readonly 'delete existing': Parameters_.delete_existing
     readonly 'path': Parameters_.path
+    readonly 'error if not exists': Parameters_.error_if_not_exists
 }
 
 export namespace Error_ {
     
-    export type path = i_imports_path.Node_Path
+    export type path = i_imports_path.Context_Path
     
     export namespace type_ {
         
-        export type directory_already_exists = null
+        export type node_does_not_exist = null
         
         export type permission_denied = null
         
     }
     
     export type type_ = 
-        | readonly ['directory already exists', type_.directory_already_exists]
+        | readonly ['node does not exist', type_.node_does_not_exist]
         | readonly ['permission denied', type_.permission_denied]
     
 }
