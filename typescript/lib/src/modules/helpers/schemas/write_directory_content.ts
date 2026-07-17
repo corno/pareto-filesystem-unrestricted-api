@@ -17,3 +17,7 @@ export type Node_Error =
 export type Error =
     // | ['make directory', s_make_directory.Error]
     | ['directory content', p_.Dictionary<Node_Error>]
+
+export type File_Write_Parameters = {
+    'newline': string
+}
