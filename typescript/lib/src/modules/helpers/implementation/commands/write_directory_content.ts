@@ -15,15 +15,31 @@ export const $$: p_.Command_Implementation<
         s_write_directory_content.Error,
         s_write_directory_content.Parameters
     >,
-    null,
+    {
+        'remove before writing': boolean
+    },
     null,
     {
         // 'make directory': resources_pareto.commands.make_directory
-        'write file': command_interfaces.write_file
+        'write file': command_interfaces.write_file,
+        'remove': command_interfaces.remove,
 
     }
 > = p_.command(
     ($d, $s, $q, $c) => [
+        p_.s.if_(
+            $s['remove before writing'],
+            [
+                $c.remove.execute(
+                    {
+                        'path': $d.path,
+                        'error if not exists': false,
+                    },
+                    ($): s_write_directory_content.Error => ['remove', $]
+                ),
+            ],
+            []
+        ),
         // $c['make directory'].execute(
         //     $p.path,
         //     ($): inf.Error => ['make directory', $]
@@ -46,7 +62,13 @@ export const $$: p_.Command_Implementation<
                             )
                         ])
                         case 'directory': return p_.option($, ($) => [
-                            $$(null, null, $c).execute(
+                            $$(
+                                {
+                                    'remove before writing': false
+                                },
+                                null,
+                                $c
+                            ).execute(
                                 {
                                     'directory': $,
                                     'path': t_path_to_path.extend_context_path_with_single_step($d.path, { 'addition': id }),
