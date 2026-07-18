@@ -4,14 +4,17 @@ import p_super_query_result from 'pareto-core/implementation/query/super_query_r
 
 import type * as s_read_directory_content from "../../schemas/read_directory_content.js"
 import type * as s_directory_content from "../../schemas/directory_content_as_read.js"
-import type * as query_interfaces from "../../interface/queries.js"
 import type * as query_interfaces_unrestricted from "../../../unrestricted/interface/queries.js"
 
 //dependencies
 import * as t_path_to_path from "../../../unrestricted/implementation/transformers/path/path.js"
 
 export const $$: p_.Query_Implementation<
-    query_interfaces.read_directory_content,
+     p_.Query_Interface<
+        s_read_directory_content.Result,
+        s_read_directory_content.Error,
+        s_read_directory_content.Parameters
+    >,
     null,
     {
         'read directory': query_interfaces_unrestricted.read_directory,
