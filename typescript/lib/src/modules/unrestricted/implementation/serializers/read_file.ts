@@ -11,7 +11,7 @@ namespace declarations {
 
 
 //dependencies
-import * as t_path_to_text from "./unrestricted_path.js"
+import * as t_path_to_text from "./path.js"
 
 //shorthands
 
