@@ -1,0 +1,19 @@
+import type * as p_ti from 'pareto-core/interface/transformer'
+import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
+
+//schemas
+import type * as s_out from "./schema.js"
+
+//dependencies
+import * as t_from_list_of_characters from "./refiners/list_of_characters.js"
+
+
+export const Non_Normalized_Path: p_ti.Transformer<
+    string,
+    s_out.Non_Normalized_Path
+> = ($) => t_from_list_of_characters.Non_Normalized_Path(
+    p_list_from_text(
+        $,
+        ($) => $
+    )
+)
