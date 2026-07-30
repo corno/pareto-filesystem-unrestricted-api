@@ -20,7 +20,7 @@ import * as ser_read_directory from "../../../../unrestricted/implementation/ser
 import * as ser_read_file from "../../../../unrestricted/implementation/serializers/read_file.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"
+import * as sh from "pareto-fountain-pen/modules/paragraph/shorthands/deprecated"
 
 export const Node_Error: declarations.Node_Error = ($) => p_.from.state($).decide(
     ($) => {

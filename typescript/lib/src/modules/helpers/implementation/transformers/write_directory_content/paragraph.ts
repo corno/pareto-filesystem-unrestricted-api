@@ -20,7 +20,7 @@ import * as ser_write_file from "../../../../unrestricted/implementation/seriali
 import * as ser_remove from "../../../../unrestricted/implementation/serializers/remove.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"
+import * as sh from "pareto-fountain-pen/modules/paragraph/shorthands/deprecated"
 
 export const Node_Error: declarations.Node_Error = ($) => p_.from.state($).decide(
     ($) => {
