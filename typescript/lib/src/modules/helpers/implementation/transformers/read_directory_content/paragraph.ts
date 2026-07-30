@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
 //schemas
-import type * as s_in from "../../../schemas/read_directory_content.js"
+import type * as s_in from "../../../schemas/read_nested_directory_content.js"
 import type * as s_out from "../../../schemas/paragraph.js"
 
 namespace declarations {

@@ -4,8 +4,8 @@ import type * as s_fs_unrestricted_read_directory from "./schemas/read_directory
 import type * as s_fs_unrestricted_read_file from "./schemas/read_file.js"
 import type * as s_fs_unrestricted_stat from "./schemas/stat.js"
 import type * as s_fs_unrestricted_stat_possible_node from "./schemas/stat_possible_node.js"
-import type * as s_read_directory_content from "../../helpers/schemas/read_directory_content.js"
-import type * as s_read_directory_structure from "../../helpers/schemas/read_directory_structure.js"
+import type * as s_read_directory_content from "../../helpers/schemas/read_nested_directory_content.js"
+import type * as s_read_directory_structure from "../../helpers/schemas/read_nested_directory_structure.js"
 
 export type read_directory = p_.Query_Interface<
     s_fs_unrestricted_read_directory.Result,
