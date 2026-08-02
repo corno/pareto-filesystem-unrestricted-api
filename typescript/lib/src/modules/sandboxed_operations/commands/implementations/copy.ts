@@ -1,11 +1,11 @@
 
-// import type * as interface_ from "../../../interface/signatures/filesystem_sandboxed.js"
+// import type * as declarations_ from "../../../interface/signatures/filesystem_sandboxed.js"
 
 // //dependencies
 // import * as t_path_to_path from "../transformers/sandboxed_path/unrestricted_path.js"
 
 
-// export const $$: interface_.commands.copy = p_.command(
+// export const $$: declarations_.commands.copy = p_.command(
 //     ($d, $s, $q, $c, $x) => [
 //         $c.unrestricted.execute(
 //             {
