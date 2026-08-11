@@ -10,20 +10,21 @@ export namespace s_parameters {
 
 }
 
-export type Node_Path = p_.Refiner_With_Parameter<
-    s_out.Node_Path,
-    s_error.Error,
-    s_in.List_Of_Characters,
-    s_parameters.Parameters
->
-
+namespace declarations {
+    export type Node_Path = p_.Refiner_With_Parameter<
+        s_out.Node_Path,
+        s_error.Error,
+        s_in.List_Of_Characters,
+        s_parameters.Parameters
+    >
+}
 
 
 //dependencies
 import * as r_from_non_normalized_path from "./non_normalized_path.js"
 import * as r_non_normalized_path_from_loc from "../../path_non_normalized/refiners/list_of_characters.js"
 
-export const Node_Path: Node_Path = ($, abort, $p) => {
+export const Node_Path: declarations.Node_Path = ($, abort, $p) => {
     return r_from_non_normalized_path.Node_Path(
         r_non_normalized_path_from_loc.Non_Normalized_Path($),
         abort,

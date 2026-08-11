@@ -5,34 +5,34 @@ import * as p_t from 'pareto-core/implementation/transformer'
 import type * as s_in from "../../path_non_normalized/schema.js"
 import type * as s_out from "../schema.js"
 
-type Intermediate_Result = {
-    subppath: s_out.Context_Subpath
-    node: string | null
-    up_steps: number
-}
 
 
 import type * as s_error from "../../path_error/schema.js"
 
 
+namespace declarations {
+    export type Node_Path = p_.Refiner_With_Parameter<
+        s_out.Node_Path,
+        s_error.Error,
+        s_in.Non_Normalized_Path,
+        {
+            'pedantic': boolean
+        }
+    >
+}
 
-export type Node_Path = p_.Refiner_With_Parameter<
-    s_out.Node_Path,
-    s_error.Error,
-    s_in.Non_Normalized_Path,
-    {
-        'pedantic': boolean
-    }
->
 
-
-
-export const Node_Path: Node_Path = ($, abort, $p) => {
+export const Node_Path: declarations.Node_Path = ($, abort, $p) => {
 
     if ($p.pedantic) {
         if ($['trailing slash']) {
             abort(['trailing slash not allowed', null])
         }
+    }
+    type Intermediate_Result = {
+        subppath: s_out.Context_Subpath
+        node: string | null
+        up_steps: number
     }
     let intermediate_result: Intermediate_Result = {
 
@@ -109,15 +109,15 @@ export const Node_Path: Node_Path = ($, abort, $p) => {
 
 }
 
-type Intermediate_Result2 = {
-    subppath: s_out.Context_Subpath
-    up_steps: number
-}
-
 export const Context_Path = (
     $: s_in.Non_Normalized_Path,
 ): s_out.Context_Path => {
 
+
+    type Intermediate_Result2 = {
+        subppath: s_out.Context_Subpath
+        up_steps: number
+    }
     let intermediate_result: Intermediate_Result2 = {
 
         subppath: p_.literal.list([]),
