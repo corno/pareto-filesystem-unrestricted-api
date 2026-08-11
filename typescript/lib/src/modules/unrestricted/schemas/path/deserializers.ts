@@ -5,27 +5,29 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 import type * as s_out from "./schema.js"
 import type * as s_error from "../path_error/schema.js"
 
-export namespace s_parameters {
+namespace s_parameters {
 
     export type Parameters = { 'pedantic': boolean }
 
 }
 
+namespace declarations {
 
+    export type Node_Path = p_.Refiner_With_Parameter<
+        s_out.Node_Path,
+        s_error.Error,
+        string,
+        s_parameters.Parameters
+    >
 
-export type Node_Path = p_.Refiner_With_Parameter<
-    s_out.Node_Path,
-    s_error.Error,
-    string,
-    s_parameters.Parameters
->
+}
 
 
 //dependencies
 import * as r_from_list_of_characters from "./refiners/list_of_characters.js"
 
 
-export const Node_Path: Node_Path = ($, abort, $p) => {
+export const Node_Path: declarations.Node_Path = ($, abort, $p) => {
     return r_from_list_of_characters.Node_Path(
         p_list_from_text(
             $,
