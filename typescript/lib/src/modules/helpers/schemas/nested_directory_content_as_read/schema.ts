@@ -4,9 +4,11 @@ import type * as s_list_of_characters from "../../../unrestricted/schemas/list_o
 
 export type Node =
     | ['other', null]
-    | ['file', {
-        'data': s_list_of_characters.List_Of_Characters
-    }]
+    | ['file', File]
     | ['directory', Directory]
+
+export type File = {
+    'data': s_list_of_characters.List_Of_Characters
+}
 
 export type Directory = p_.Dictionary<Node>
