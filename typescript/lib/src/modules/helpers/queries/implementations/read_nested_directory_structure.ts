@@ -19,13 +19,15 @@ export const $$: p_.Query_Implementation<
         'read directory': query_interfaces_unrestricted.read_directory,
     }
 > = p_.query(
-    ($d, $s, $q) => p_super_query_result($q['read directory'](
-        {
-            'path': $d.path,
-        },
-        ($): s_read_directory_structure.Error => ['read directory', $],
-    )).query(
-        ($) => p_.e.dictionary(
+    (e, $s, $q) => e.query(
+        ($d) => $q['read directory'](
+            {
+                'path': $d.path,
+            },
+            ($): s_read_directory_structure.Error => ['read directory', $],
+        )
+    ).query(
+        ($) => p_.e_deprecated.dictionary(
             $,
             ($): p_.Query_Result<s_directory_structure.Node, s_read_directory_structure.Node_Error> => {
                 const path = $.path
@@ -41,8 +43,8 @@ export const $$: p_.Query_Implementation<
                             ($): s_read_directory_structure.Node_Error => ['directory', $]
                         )).transform(
                             ($): s_directory_structure.Node => ['directory', $]))
-                        case 'file': return p_.option($, ($) => p_.e.direct_result(['file', null]))
-                        case 'other': return p_.option($, ($) => p_.e.direct_result(['other', null]))
+                        case 'file': return p_.option($, ($) => p_.e_deprecated.direct_result(['file', null]))
+                        case 'other': return p_.option($, ($) => p_.e_deprecated.direct_result(['other', null]))
                         default: return p_.exhaustive($[0])
                     }
                 })

@@ -1,7 +1,6 @@
 import * as p_ from 'pareto-core/implementation/query'
 import * as p_t from 'pareto-core/implementation/transformer'
 import * as p_r from 'pareto-core/implementation/refiner'
-import p_super_query_result from 'pareto-core/implementation/query/super_query_result'
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
 import type * as s_flat_directory_structure from "../../schemas/flat_directory_structure/schema.js"
@@ -22,17 +21,17 @@ const Directory: p_t.Transformer<
     ($, id) => p_t.from.state($).decide(
         ($) => {
             switch ($[0]) {
-                case 'other': return p_t.ss($, ($) => p_t.literal.dictionary({}))
-                case 'file': return p_t.ss($, ($) => p_t.literal.dictionary({
+                case 'other': return p_t.option($, ($) => p_t.literal.dictionary({}))
+                case 'file': return p_t.option($, ($) => p_t.literal.dictionary({
                     [id]: null,
                 }))
-                case 'directory': return p_t.ss($, ($) => p_r.from.dictionary(
+                case 'directory': return p_t.option($, ($) => p_r.from.dictionary(
                     Directory($)
                 ).re_id(
                     ($, id2) => `${id}/${id2}`,
                     () => p_unreachable_code_path("a directory can be flattened into a flat list of files"),
                 ))
-                default: return p_t.au($[0])
+                default: return p_t.exhaustive($[0])
             }
         }
     ),
@@ -52,8 +51,8 @@ export const $$: p_.Query_Implementation<
         'read directory': query_interfaces_unrestricted.read_directory,
     }
 > = p_.query(
-    ($d, $s, $q) => p_super_query_result(
-        q_read_nested_directory_structure(
+    (e, $s, $q) => e.query(
+        ($d) => q_read_nested_directory_structure(
             null,
             $q,
         )(

@@ -10,7 +10,7 @@ import type * as query_interfaces_unrestricted from "../../../unrestricted/queri
 import * as t_path_to_path from "../../../unrestricted/schemas/path/transformers/path.js"
 
 export const $$: p_.Query_Implementation<
-     p_.Query_Interface<
+    p_.Query_Interface<
         s_read_directory_content.Result,
         s_read_directory_content.Error,
         s_read_directory_content.Parameters
@@ -21,13 +21,15 @@ export const $$: p_.Query_Implementation<
         'read file': query_interfaces_unrestricted.read_file,
     }
 > = p_.query(
-    ($d, $s, $q) => p_super_query_result($q['read directory'](
-        {
-            'path': $d.path,
-        },
-        ($): s_read_directory_content.Error => ['read directory', $],
-    )).query(
-        ($) => p_.e.dictionary(
+    (e, $s, $q) => e.query(
+        ($d) => $q['read directory'](
+            {
+                'path': $d.path,
+            },
+            ($): s_read_directory_content.Error => ['read directory', $],
+        )
+    ).query(
+        ($) => p_.e_deprecated.dictionary(
             $,
             ($): p_.Query_Result<s_directory_content.Node, s_read_directory_content.Node_Error> => {
                 const path = $.path
@@ -50,7 +52,7 @@ export const $$: p_.Query_Implementation<
                             ($): s_read_directory_content.Node_Error => ['directory', $]
                         )).transform(
                             ($): s_directory_content.Node => ['directory', $]))
-                        case 'other': return p_.option($, ($) => p_.e.direct_result(['other', null]))
+                        case 'other': return p_.option($, ($) => p_.e_deprecated.direct_result(['other', null]))
                         default: return p_.exhaustive($[0])
                     }
                 })
