@@ -1,5 +1,5 @@
-import type * as p_ti from 'pareto-core/interface/transformer'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
+import type * as p_ti from 'pareto-core/transformer'
+import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
 
 //schemas
 import type * as s_out from "./schema.js"

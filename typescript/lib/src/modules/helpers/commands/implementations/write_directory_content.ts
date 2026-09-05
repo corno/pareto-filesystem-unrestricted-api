@@ -1,5 +1,4 @@
-import * as p_ from 'pareto-core/implementation/command'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
+import * as p_ from 'pareto-core/command'
 
 //interface dependencies
 import type * as command_interfaces from "../../../unrestricted/commands/interfaces.js"

@@ -1,5 +1,5 @@
-import type * as p_t from 'pareto-core/interface/transformer'
-import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
+import type * as p_t from 'pareto-core/transformer'
+import p_iterate from 'pareto-core/refiner/specials/iterate'
 
 //schemas
 import type * as s_in from "../../list_of_characters/schema.js"

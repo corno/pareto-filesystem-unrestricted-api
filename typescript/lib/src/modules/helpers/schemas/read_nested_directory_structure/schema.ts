@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
 import type * as s_read_directory from "../../../unrestricted/schemas/read_directory/schema.js"
 import type * as s_path from "../../../unrestricted/schemas/path/schema.js"

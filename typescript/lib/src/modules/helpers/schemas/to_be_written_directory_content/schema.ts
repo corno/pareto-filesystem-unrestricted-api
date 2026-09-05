@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
 import * as s_to_be_written_file_content from "../../../unrestricted/schemas/to_be_written_file_content/schema.js"
 

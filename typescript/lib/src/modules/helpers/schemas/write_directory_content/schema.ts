@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
 import type * as s_remove from "../../../unrestricted/schemas/remove/schema.js"
 import type * as s_write_file from "../../../unrestricted/schemas/write_file/schema.js"

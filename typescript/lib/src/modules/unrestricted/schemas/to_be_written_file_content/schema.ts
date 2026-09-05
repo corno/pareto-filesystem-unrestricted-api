@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
 import type * as s_write_file from "../../../helpers/schemas/write_directory_content/schema.js"
 

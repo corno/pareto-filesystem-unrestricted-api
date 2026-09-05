@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
 import type * as s_list_of_characters from "../../../unrestricted/schemas/list_of_characters/schema.js"
 

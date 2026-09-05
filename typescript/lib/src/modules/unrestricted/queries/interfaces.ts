@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/query_interface'
+import * as p_ from 'pareto-core/query_interface'
 
 import type * as s_fs_unrestricted_read_directory from "../schemas/read_directory/schema.js"
 import type * as s_fs_unrestricted_read_file from "../schemas/read_file/schema.js"
