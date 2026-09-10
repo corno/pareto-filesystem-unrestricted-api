@@ -1,4 +1,4 @@
-import type * as p_ from 'pareto-core/refiner'
+import type * as p_ from 'pareto-core/deserializer'
 import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
 
 //schemas
@@ -13,10 +13,9 @@ namespace s_parameters {
 
 namespace declarations {
 
-    export type Node_Path = p_.Refiner_With_Parameter<
+    export type Node_Path = p_.Deserializer_With_Parameter<
         s_out.Node_Path,
         s_error.Error,
-        string,
         s_parameters.Parameters
     >
 
