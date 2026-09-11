@@ -29,7 +29,7 @@ export const $$: p_.Query_Implementation<
             ($): s_read_directory_content.Error => ['read directory', $],
         )
     ).query(
-        ($) => p_.e_deprecated.dictionary(
+        ($) => p_.e_deprecated.deprecated_dictionary(
             $,
             ($): p_.Query_Result<s_directory_content.Node, s_read_directory_content.Node_Error> => {
                 const path = $.path
@@ -52,7 +52,7 @@ export const $$: p_.Query_Implementation<
                             ($): s_read_directory_content.Node_Error => ['directory', $]
                         )).transform(
                             ($): s_directory_content.Node => ['directory', $]))
-                        case 'other': return p_.option($, ($) => p_.e_deprecated.direct_result(['other', null]))
+                        case 'other': return p_.option($, ($) => p_.e_deprecated.deprecated_direct_result(['other', null]))
                         default: return p_.exhaustive($[0])
                     }
                 })
