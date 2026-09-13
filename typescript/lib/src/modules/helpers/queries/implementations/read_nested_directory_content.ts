@@ -1,5 +1,5 @@
 import * as p_ from 'pareto-core/query'
-import p_super_query_result from 'pareto-core/query/super_query_result'
+import p_super_query_result from 'pareto-core/__internal/query/super_query_result'
 
 
 import type * as s_read_directory_content from "../../schemas/read_nested_directory_content/schema.js"
@@ -7,7 +7,7 @@ import type * as s_directory_content from "../../schemas/nested_directory_conten
 import type * as query_interfaces_unrestricted from "../../../unrestricted/queries/interfaces.js"
 
 //dependencies
-import * as t_path_to_path from "../../../unrestricted/schemas/path/transformers/path.js"
+import * as t_path_to_path from "../../../unrestricted/schemas/path/transformers/path_extended_with_single_step.js"
 
 export const $$: p_.Query_Implementation<
     p_.Query_Interface<
@@ -47,7 +47,12 @@ export const $$: p_.Query_Implementation<
                             $q,
                         )(
                             {
-                                'path': t_path_to_path.deprecated_node_path_to_context_path(path),
+                                'path': t_path_to_path.Context_Path(
+                                    path.context,
+                                    {
+                                        'addition': path.node
+                                    }
+                                ),
                             },
                             ($): s_read_directory_content.Node_Error => ['directory', $]
                         )).transform(

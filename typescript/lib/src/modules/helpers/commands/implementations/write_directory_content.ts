@@ -7,7 +7,8 @@ import type * as command_interfaces from "../../../unrestricted/commands/interfa
 import type * as s_write_directory_content from "../../schemas/write_directory_content/schema.js"
 
 //dependencies
-import * as t_path_to_path from "../../../unrestricted/schemas/path/transformers/path.js"
+import * as t_path_to_path from "../../../unrestricted/schemas/path/transformers/path_extended_with_single_step.js"
+import * as t_path_to_escaped_path from "../../schemas/path/transformers/escaped_path.js"
 
 export const $$: p_.Command_Implementation<
     p_.Command_Interface<
@@ -15,6 +16,7 @@ export const $$: p_.Command_Implementation<
         s_write_directory_content.Parameters
     >,
     {
+        'replace spaces in node names by underscores': boolean,
         'remove before writing': boolean
     },
     null,
@@ -54,7 +56,15 @@ export const $$: p_.Command_Implementation<
                         case 'file': return p_.option($, ($) => [
                             $c['write file'].execute(
                                 {
-                                    'path': t_path_to_path.create_node_path($d.path, { 'node': id }),
+                                    'path': $s['replace spaces in node names by underscores']
+                                        ? t_path_to_escaped_path.Node_Path({
+                                            'context': $d.path,
+                                            'node': id
+                                        })
+                                        : {
+                                            'context': $d.path,
+                                            'node': id
+                                        },
                                     'content': $.content
                                 },
                                 ($): s_write_directory_content.Node_Error => ['file', $]
@@ -63,14 +73,15 @@ export const $$: p_.Command_Implementation<
                         case 'directory': return p_.option($, ($) => [
                             $$(
                                 {
-                                    'remove before writing': false
+                                    'remove before writing': false,
+                                    'replace spaces in node names by underscores': $s['replace spaces in node names by underscores'],
                                 },
                                 null,
                                 $c
                             ).execute(
                                 {
                                     'directory': $,
-                                    'path': t_path_to_path.extend_context_path_with_single_step($d.path, { 'addition': id }),
+                                    'path': t_path_to_path.Context_Path($d.path, { 'addition': id }),
                                 },
                                 ($): s_write_directory_content.Node_Error => ['directory', $]
 
