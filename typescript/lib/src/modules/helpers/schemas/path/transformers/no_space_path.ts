@@ -11,7 +11,7 @@ export const Node_Path = (
     $: s_in.Node_Path,
 ): s_out.Node_Path => ({
     'context': Context_Path($.context),
-    'node': ser.Name($.node),
+    'node': ser.No_Space_Name($.node),
 })
 
 export const Context_Path = (
@@ -19,6 +19,6 @@ export const Context_Path = (
 ): s_out.Context_Path => ({
     'start': $.start,
     'subpath': p_.from.list($.subpath).map(
-        ($) => ser.Name($)
+        ($) => ser.No_Space_Name($)
     )
 })

@@ -8,7 +8,7 @@ import type * as s_write_directory_content from "../../schemas/write_directory_c
 
 //dependencies
 import * as t_path_to_path from "../../../unrestricted/schemas/path/transformers/path_extended_with_single_step.js"
-import * as t_path_to_escaped_path from "../../schemas/path/transformers/escaped_path.js"
+import * as t_path_to_escaped_path from "../../schemas/path/transformers/no_space_path.js"
 
 export const $$: p_.Command_Implementation<
     p_.Command_Interface<
